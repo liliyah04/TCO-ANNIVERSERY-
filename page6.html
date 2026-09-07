@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Celestial Oasis — Reality Stone</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --black:#020202;
+    --black2:#070506;
+    --panel:#0d090b;
+    --panel2:#130c0f;
+
+    --red:#a80025;
+    --bright:#f0003b;
+    --deep:#42000d;
+    --darkred:#25000a;
+
+    --line:#541522;
+    --line2:#321017;
+
+    --white:#f4eaea;
+    --text:#ddd0d0;
+    --muted:#9e8d90;
+    --dim:#625457;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    color:var(--text);
+    font-family:"Cormorant Garamond",serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(180,0,38,.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 15% 65%,
+            rgba(180,0,38,.06),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(180,0,38,.05),
+            transparent 25%
+        ),
+        var(--black);
+}
+
+/* =========================
+   ATMOSPHERE
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+
+    opacity:.13;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.045) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.045) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 92%
+    );
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            transparent 20%,
+            rgba(0,0,0,.7) 100%
+        );
+}
+
+/* =========================
+   SIDE ARCHITECTURE
+========================= */
+
+.side-line{
+    position:fixed;
+    top:0;
+    bottom:0;
+    width:1px;
+    z-index:10;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--line),
+            var(--bright),
+            var(--line),
+            transparent
+        );
+}
+
+.side-line.left{
+    left:27px;
+}
+
+.side-line.right{
+    right:27px;
+}
+
+.side-mark{
+    position:fixed;
+    z-index:10;
+
+    writing-mode:vertical-rl;
+
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    letter-spacing:5px;
+
+    color:var(--dim);
+
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.side-mark.left{
+    left:9px;
+}
+
+.side-mark.right{
+    right:9px;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+    height:82px;
+
+    border-bottom:1px solid var(--line);
+
+    padding:0 65px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    position:relative;
+    z-index:20;
+
+    font-family:"DM Mono",monospace;
+    font-size:9px;
+    letter-spacing:3px;
+}
+
+.topbar .brand{
+    color:var(--white);
+}
+
+.topbar .chapter{
+    color:var(--bright);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    width:min(1200px,88%);
+    margin:auto;
+
+    min-height:720px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+    z-index:2;
+}
+
+.hero-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.hero-number{
+    position:absolute;
+
+    top:70px;
+    right:3%;
+
+    font-family:"Cinzel",serif;
+    font-size:190px;
+    font-weight:800;
+
+    color:transparent;
+
+    -webkit-text-stroke:1px rgba(240,0,59,.13);
+
+    pointer-events:none;
+}
+
+.hero-kicker{
+    font-family:"DM Mono",monospace;
+    font-size:10px;
+    letter-spacing:6px;
+
+    color:var(--bright);
+
+    margin-bottom:24px;
+}
+
+.hero h1{
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(58px,9vw,130px);
+
+    line-height:.88;
+
+    letter-spacing:5px;
+
+    color:var(--white);
+
+    text-shadow:
+        0 0 35px rgba(180,0,38,.18);
+}
+
+.hero h1 span{
+    color:var(--bright);
+}
+
+.hero-description{
+    max-width:720px;
+
+    margin-top:35px;
+
+    font-size:20px;
+    line-height:1.5;
+
+    color:var(--muted);
+}
+
+/* =========================
+   REALITY CORE
+========================= */
+
+.core-wrap{
+    margin-top:65px;
+
+    width:180px;
+    height:180px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+.core-outer{
+    position:absolute;
+    inset:0;
+
+    border:1px solid var(--line);
+
+    transform:rotate(45deg);
+
+    box-shadow:
+        0 0 40px rgba(180,0,38,.1);
+}
+
+.core-middle{
+    position:absolute;
+    inset:17px;
+
+    border:1px solid var(--red);
+
+    transform:rotate(45deg);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(180,0,38,.15),
+            transparent 65%
+        );
+}
+
+.core-inner{
+    width:88px;
+    height:88px;
+
+    border:1px solid var(--bright);
+
+    transform:rotate(45deg);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 0 25px rgba(240,0,59,.18),
+        inset 0 0 25px rgba(240,0,59,.08);
+}
+
+.core-inner span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+    font-size:12px;
+    letter-spacing:3px;
+
+    color:var(--white);
+}
+
+.core-dot{
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    background:var(--bright);
+
+    box-shadow:
+        0 0 20px var(--bright),
+        0 0 45px rgba(240,0,59,.5);
+}
+
+/* =========================
+   INTRO PANEL
+========================= */
+
+.intro{
+    width:min(1100px,88%);
+    margin:0 auto 100px;
+
+    padding:9px;
+
+    border:1px solid var(--line);
+
+    position:relative;
+    z-index:2;
+}
+
+.intro-inner{
+    padding:55px 70px;
+
+    border:1px solid var(--line2);
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.08),
+            transparent 45%
+        ),
+        var(--panel);
+}
+
+.intro-label{
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+    letter-spacing:5px;
+
+    color:var(--bright);
+
+    margin-bottom:18px;
+}
+
+.intro h2{
+    font-family:"Cinzel",serif;
+
+    font-size:34px;
+    letter-spacing:2px;
+
+    color:var(--white);
+
+    margin-bottom:18px;
+}
+
+.intro h2 span{
+    color:var(--bright);
+}
+
+.intro p{
+    max-width:850px;
+    margin:auto;
+
+    font-size:19px;
+    line-height:1.55;
+
+    color:var(--muted);
+}
+
+/* =========================
+   DECORATIVE CORNERS
+========================= */
+
+.corner{
+    position:absolute;
+
+    width:35px;
+    height:35px;
+
+    z-index:5;
+}
+
+.corner::before,
+.corner::after{
+    content:"";
+    position:absolute;
+
+    background:var(--bright);
+}
+
+.corner::before{
+    width:100%;
+    height:1px;
+}
+
+.corner::after{
+    width:1px;
+    height:100%;
+}
+
+.corner.tl{
+    top:-1px;
+    left:-1px;
+}
+
+.corner.tr{
+    top:-1px;
+    right:-1px;
+    transform:rotate(90deg);
+}
+
+.corner.br{
+    bottom:-1px;
+    right:-1px;
+    transform:rotate(180deg);
+}
+
+.corner.bl{
+    bottom:-1px;
+    left:-1px;
+    transform:rotate(270deg);
+}
+
+/* =========================
+   DESIGN CHAMBER
+========================= */
+
+.chamber{
+    width:min(1250px,88%);
+    margin:0 auto 120px;
+
+    position:relative;
+    z-index:2;
+}
+
+.chamber-heading{
+    text-align:center;
+
+    margin-bottom:45px;
+}
+
+.chamber-heading .small{
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+    letter-spacing:5px;
+
+    color:var(--bright);
+
+    margin-bottom:15px;
+}
+
+.chamber-heading h2{
+    font-family:"Cinzel",serif;
+
+    font-size:39px;
+    letter-spacing:3px;
+
+    color:var(--white);
+}
+
+/* =========================
+   DESIGN GRID
+========================= */
+
+.design-grid{
+    display:grid;
+
+    grid-template-columns:repeat(12,1fr);
+
+    gap:18px;
+}
+
+/* =========================
+   DESIGN CARD
+========================= */
+
+.design-card{
+    position:relative;
+
+    padding:38px 30px 34px;
+
+    background:
+        linear-gradient(
+            150deg,
+            rgba(180,0,38,.1),
+            transparent 38%
+        ),
+        var(--panel);
+
+    border:1px solid var(--line);
+
+    overflow:hidden;
+
+    text-align:center;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.design-card::before{
+    content:"";
+
+    position:absolute;
+    inset:8px;
+
+    border:1px solid rgba(180,0,38,.14);
+
+    pointer-events:none;
+}
+
+.design-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    left:50%;
+    top:45%;
+
+    transform:translate(-50%,-50%);
+
+    background:rgba(180,0,38,.05);
+
+    filter:blur(35px);
+
+    pointer-events:none;
+}
+
+.design-card:hover{
+    transform:translateY(-7px);
+
+    border-color:var(--bright);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.7),
+        0 0 35px rgba(180,0,38,.1);
+}
+
+/* sizes */
+
+.graphic{
+    grid-column:span 7;
+}
+
+.theme{
+    grid-column:span 5;
+}
+
+.text{
+    grid-column:span 5;
+}
+
+.bio{
+    grid-column:span 7;
+}
+
+.playlist{
+    grid-column:span 4;
+}
+
+.carrd{
+    grid-column:span 4;
+}
+
+.title{
+    grid-column:span 4;
+}
+
+/* =========================
+   CARD HEADER
+========================= */
+
+.card-index{
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+    letter-spacing:4px;
+
+    color:var(--bright);
+
+    margin-bottom:22px;
+}
+
+.card-icon{
+    width:60px;
+    height:60px;
+
+    margin:0 auto 25px;
+
+    border:1px solid var(--red);
+
+    transform:rotate(45deg);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    box-shadow:
+        0 0 20px rgba(180,0,38,.08);
+}
+
+.card-icon::before{
+    content:"";
+
+    position:absolute;
+    inset:7px;
+
+    border:1px solid var(--line);
+}
+
+.card-icon span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+
+    font-size:19px;
+
+    color:var(--bright);
+
+    position:relative;
+    z-index:2;
+}
+
+.design-card h3{
+    font-family:"Cinzel",serif;
+
+    font-size:25px;
+    letter-spacing:2px;
+
+    color:var(--white);
+
+    margin-bottom:9px;
+}
+
+.role-description{
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+    letter-spacing:2px;
+
+    color:var(--dim);
+
+    margin-bottom:27px;
+}
+
+/* =========================
+   NAME FIELD
+========================= */
+
+.members{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:9px;
+
+    position:relative;
+    z-index:2;
+}
+
+.member{
+    position:relative;
+
+    min-width:90px;
+
+    padding:12px 15px;
+
+    border:1px solid #5a1b28;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.13),
+            rgba(20,5,8,.9)
+        );
+
+    color:#fff;
+
+    font-family:"Cinzel",serif;
+
+    font-size:11px;
+    font-weight:600;
+
+    letter-spacing:1.3px;
+
+    box-shadow:
+        inset 0 0 15px rgba(180,0,38,.04),
+        0 0 10px rgba(180,0,38,.03);
+
+    transition:.3s ease;
+}
+
+.member::before{
+    content:"";
+    position:absolute;
+
+    top:-1px;
+    left:18px;
+    right:18px;
+
+    height:1px;
+
+    background:var(--bright);
+
+    box-shadow:0 0 7px var(--bright);
+}
+
+.member::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-1px;
+    left:30%;
+    right:30%;
+
+    height:1px;
+
+    background:var(--red);
+}
+
+.member:hover{
+    transform:translateY(-3px);
+
+    border-color:var(--bright);
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(240,0,59,.25),
+            rgba(25,5,9,.95)
+        );
+
+    box-shadow:
+        0 0 20px rgba(240,0,59,.16);
+}
+
+/* =========================
+   FEATURE STRIP
+========================= */
+
+.reality-strip{
+    margin-top:18px;
+
+    grid-column:span 12;
+
+    min-height:180px;
+
+    border:1px solid var(--red);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(180,0,38,.13),
+            transparent 50%,
+            rgba(180,0,38,.08)
+        ),
+        #080506;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.reality-strip::before,
+.reality-strip::after{
+    content:"";
+
+    position:absolute;
+
+    height:1px;
+
+    width:32%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--red),
+        transparent
+    );
+}
+
+.reality-strip::before{
+    top:24px;
+}
+
+.reality-strip::after{
+    bottom:24px;
+}
+
+.reality-strip .label{
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+    letter-spacing:5px;
+
+    color:var(--bright);
+
+    margin-bottom:13px;
+}
+
+.reality-strip h3{
+    font-family:"Cinzel",serif;
+
+    font-size:30px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+
+    margin-bottom:10px;
+}
+
+.reality-strip p{
+    width:min(750px,85%);
+
+    font-size:18px;
+    line-height:1.45;
+
+    color:var(--muted);
+}
+
+/* =========================
+   CLOSING
+========================= */
+
+.closing{
+    width:min(900px,88%);
+
+    margin:0 auto 100px;
+
+    text-align:center;
+
+    position:relative;
+    z-index:2;
+}
+
+.closing-symbol{
+    width:40px;
+    height:40px;
+
+    border:1px solid var(--red);
+
+    transform:rotate(45deg);
+
+    margin:0 auto 30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.closing-symbol span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+    color:var(--bright);
+}
+
+.closing h2{
+    font-family:"Cinzel",serif;
+
+    font-size:34px;
+    letter-spacing:2px;
+
+    color:var(--white);
+
+    margin-bottom:18px;
+}
+
+.closing p{
+    font-size:19px;
+    line-height:1.5;
+
+    color:var(--muted);
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navigation{
+    width:min(1250px,88%);
+
+    margin:0 auto 70px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    position:relative;
+    z-index:2;
+}
+
+.nav-button{
+    flex:1;
+
+    padding:20px 28px;
+
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.06),
+            transparent
+        ),
+        #080506;
+
+    color:var(--white);
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+.nav-button:hover{
+    border-color:var(--bright);
+
+    box-shadow:
+        0 0 30px rgba(180,0,38,.1);
+
+    background:#100609;
+}
+
+.nav-button span{
+    display:block;
+
+    margin-top:8px;
+
+    color:var(--bright);
+
+    font-size:8px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--line);
+
+    padding:27px 65px;
+
+    display:flex;
+    justify-content:space-between;
+
+    position:relative;
+    z-index:2;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+    letter-spacing:3px;
+
+    color:var(--dim);
+}
+
+footer strong{
+    color:var(--bright);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
+    .side-line,
+    .side-mark{
+        display:none;
+    }
+
+    .topbar{
+        padding:0 30px;
+    }
+
+    .hero{
+        min-height:650px;
+    }
+
+    .hero-number{
+        font-size:130px;
+        top:70px;
+    }
+
+    .graphic,
+    .theme,
+    .text,
+    .bio,
+    .playlist,
+    .carrd,
+    .title{
+        grid-column:span 6;
+    }
+
+    .reality-strip{
+        grid-column:span 12;
+    }
+}
+
+@media(max-width:680px){
+
+    .topbar{
+        height:70px;
+        padding:0 22px;
+    }
+
+    .topbar{
+        font-size:8px;
+    }
+
+    .topbar .chapter{
+        display:none;
+    }
+
+    .hero{
+        width:90%;
+        min-height:620px;
+    }
+
+    .hero-number{
+        font-size:90px;
+        top:65px;
+        right:0;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .hero-description{
+        font-size:18px;
+    }
+
+    .core-wrap{
+        width:135px;
+        height:135px;
+    }
+
+    .core-inner{
+        width:65px;
+        height:65px;
+    }
+
+    .intro{
+        width:90%;
+    }
+
+    .intro-inner{
+        padding:38px 23px;
+    }
+
+    .intro h2{
+        font-size:26px;
+    }
+
+    .intro p{
+        font-size:17px;
+    }
+
+    .chamber{
+        width:90%;
+    }
+
+    .chamber-heading h2{
+        font-size:28px;
+    }
+
+    .design-grid{
+        grid-template-columns:1fr;
+    }
+
+    .graphic,
+    .theme,
+    .text,
+    .bio,
+    .playlist,
+    .carrd,
+    .title,
+    .reality-strip{
+        grid-column:span 1;
+    }
+
+    .design-card{
+        padding:34px 20px;
+    }
+
+    .member{
+        min-width:100px;
+        font-size:10px;
+    }
+
+    .navigation{
+        flex-direction:column;
+        width:90%;
+    }
+
+    .nav-button{
+        width:100%;
+    }
+
+    footer{
+        padding:25px;
+        flex-direction:column;
+        gap:10px;
+    }
+}
+
+@media(max-width:400px){
+
+    .hero h1{
+        font-size:44px;
+    }
+
+    .member{
+        min-width:85px;
+        padding:10px 11px;
+        font-size:9px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="side-line left"></div>
+<div class="side-line right"></div>
+
+<div class="side-mark left">
+    THE CELESTIAL OASIS
+</div>
+
+<div class="side-mark right">
+    REALITY ARCHIVE
+</div>
+
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<header class="topbar">
+
+    <div class="brand">
+        THE CELESTIAL OASIS
+    </div>
+
+    <div class="chapter">
+        CHAMBER VI • THE REALITY STONE
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-number">
+        06
+    </div>
+
+    <div class="hero-content">
+
+        <div class="hero-kicker">
+            THE DESIGNERS' CHAMBER
+        </div>
+
+        <h1>
+            THE<br>
+            <span>REALITY</span><br>
+            STONE
+        </h1>
+
+        <p class="hero-description">
+            This is where imagination stops being an idea
+            and becomes something people can actually see.
+            Every design, every detail and every little visual
+            choice has a person behind it.
+        </p>
+
+        <div class="core-wrap">
+
+            <div class="core-outer"></div>
+
+            <div class="core-middle"></div>
+
+            <div class="core-inner">
+                <span>REALITY</span>
+            </div>
+
+            <div class="core-dot"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="intro">
+
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner br"></div>
+    <div class="corner bl"></div>
+
+    <div class="intro-inner">
+
+        <div class="intro-label">
+            ARCHIVE RECORD • 06
+        </div>
+
+        <h2>
+            THE PEOPLE WHO GIVE TCO
+            <span>ITS LOOK.</span>
+        </h2>
+
+        <p>
+            Graphics. Themes. Text. Bios. Playlists. Carrds.
+            Titles. So much of what people see around TCO
+            exists because someone took an idea and turned
+            it into something real. This chamber is dedicated
+            to every designer who has helped shape the Oasis.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DESIGN CHAMBER
+========================= -->
+
+<section class="chamber">
+
+    <div class="chamber-heading">
+
+        <div class="small">
+            REALITY STONE • CREATIVE ARCHIVE
+        </div>
+
+        <h2>
+            THE DESIGNERS
+        </h2>
+
+    </div>
+
+
+    <div class="design-grid">
+
+
+        <!-- GRAPHIC DESIGNERS -->
+
+        <article class="design-card graphic">
+
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+
+            <div class="card-index">
+                01 / VISUAL ARCHITECTURE
+            </div>
+
+            <div class="card-icon">
+                <span>G</span>
+            </div>
+
+            <h3>
+                GRAPHIC DESIGNERS
+            </h3>
+
+            <div class="role-description">
+                VISUALS • ARTWORK • GRAPHICS
+            </div>
+
+            <div class="members">
+
+                <div class="member">SKY</div>
+                <div class="member">SHREEYA</div>
+                <div class="member">PARTHI</div>
+                <div class="member">VINNIE</div>
+                <div class="member">HSU</div>
+                <div class="member">RYAN</div>
+                <div class="member">HONEY</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- THEME DESIGNERS -->
+
+        <article class="design-card theme">
+
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+
+            <div class="card-index">
+                02 / ATMOSPHERE
+            </div>
+
+            <div class="card-icon">
+                <span>T</span>
+            </div>
+
+            <h3>
+                THEME DESIGNERS
+            </h3>
+
+            <div class="role-description">
+                THEMES • STYLE • AESTHETIC
+            </div>
+
+            <div class="members">
+
+                <div class="member">SAV</div>
+                <div class="member">SHREEYA</div>
+                <div class="member">VINNIE</div>
+                <div class="member">ALIN</div>
+                <div class="member">JAZZ</div>
+                <div class="member">RYAN</div>
+                <div class="member">ANN</div>
+                <div class="member">HSU</div>
+                <div class="member">PARTHI</div>
+                <div class="member">CRYSTAL</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- TEXT DESIGNERS -->
+
+        <article class="design-card text">
+
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+
+            <div class="card-index">
+                03 / WORDCRAFT
+            </div>
+
+            <div class="card-icon">
+                <span>X</span>
+            </div>
+
+            <h3>
+                TEXT DESIGNERS
+            </h3>
+
+            <div class="role-description">
+                WORDS • FORMATTING • PRESENTATION
+            </div>
+
+            <div class="members">
+
+                <div class="member">AVI</div>
+                <div class="member">HONEY</div>
+                <div class="member">SHREEYA</div>
+                <div class="member">ANN</div>
+                <div class="member">CRYSTAL</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- BIO DESIGNERS -->
+
+        <article class="design-card bio">
+
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+
+            <div class="card-index">
+                04 / IDENTITY
+            </div>
+
+            <div class="card-icon">
+                <span>B</span>
+            </div>
+
+            <h3>
+                BIO DESIGNERS
+            </h3>
+
+            <div class="role-description">
+                PROFILES • BIOS • PERSONAL IDENTITY
+            </div>
+
+            <div class="members">
+
+                <div class="member">ETHAN</div>
+                <div class="member">LIYAH</div>
+                <div class="member">ANN</div>
+                <div class="member">SHREEYA</div>
+                <div class="member">AVI</div>
+                <div class="member">PARTHI</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- PLAYLIST -->
+
+        <article class="design-card playlist">
+
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+
+            <div class="card-index">
+                05 / SOUNDTRACK
+            </div>
+
+            <div class="card-icon">
+                <span>P</span>
+            </div>
+
+            <h3>
+                PLAYLIST DESIGNER
+            </h3>
+
+            <div class="role-description">
+                MUSIC • MOOD • CURATION
+            </div>
+
+            <div class="members">
+
+                <div class="member">SIYA</div>
+                <div class="member">NISSY</div>
+                <div class="member">VINNIE</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARRD -->
+
+        <article class="design-card carrd">
+
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+
+            <div class="card-index">
+                06 / DIGITAL SPACE
+            </div>
+
+            <div class="card-icon">
+                <span>C</span>
+            </div>
+
+            <h3>
+                CARRD DESIGNER
+            </h3>
+
+            <div class="role-description">
+                WEB • LAYOUT • DIGITAL SPACE
+            </div>
+
+            <div class="members">
+
+                <div class="member">RHYS</div>
+                <div class="member">ECLIPSE</div>
+                <div class="member">RYAN</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- TITLE DESIGNER -->
+
+        <article class="design-card title">
+
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+
+            <div class="card-index">
+                07 / FINAL DETAIL
+            </div>
+
+            <div class="card-icon">
+                <span>+</span>
+            </div>
+
+            <h3>
+                TITLE DESIGNER
+            </h3>
+
+            <div class="role-description">
+                TITLES • HEADINGS • FIRST IMPRESSIONS
+            </div>
+
+            <div class="members">
+
+                <div class="member">ERIS</div>
+                <div class="member">ARIA</div>
+                <div class="member">SIYA</div>
+                <div class="member">PRISKE</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- REALITY STRIP -->
+
+        <article class="reality-strip">
+
+            <div class="label">
+                REALITY STONE • ARCHIVE NOTE
+            </div>
+
+            <h3>
+                EVERY DETAIL HAS A NAME.
+            </h3>
+
+            <p>
+                A graphic does not appear out of nowhere.
+                A theme does not build itself. A playlist,
+                a bio, a Carrd, a title — each one carries
+                the work of someone who chose to create it.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CLOSING
+========================= -->
+
+<section class="closing">
+
+    <div class="closing-symbol">
+        <span>R</span>
+    </div>
+
+    <h2>
+        THIS IS WHAT MAKES IT REAL.
+    </h2>
+
+    <p>
+        The Reality Stone isn't just about pretty things.
+        It's about the people who kept creating them.
+        Every name in this chamber is part of the visual
+        story of The Celestial Oasis.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navigation">
+
+    <button
+        class="nav-button"
+        onclick="window.location.href='page5.html'">
+
+        ← RETURN TO THE PREVIOUS CHAMBER
+
+        <span>
+            CHAMBER V • PREVIOUS STONE
+        </span>
+
+    </button>
+
+
+    <button
+        class="nav-button"
+        onclick="window.location.href='page7.html'">
+
+        ENTER THE NEXT CHAMBER →
+
+        <span>
+            CHAMBER VII • THE POWER STONE
+        </span>
+
+    </button>
+
+</nav>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        THE CELESTIAL OASIS
+    </div>
+
+    <div>
+        <strong>REALITY STONE</strong> • CHAMBER VI
+    </div>
+
+</footer>
+
+</body>
+</html>

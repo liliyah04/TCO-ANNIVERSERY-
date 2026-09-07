@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Celestial Oasis — Time Stone</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#020202;
+    --black2:#070506;
+    --panel:#0d090b;
+    --panel2:#130c0f;
+
+    --red:#a80025;
+    --bright:#f0003b;
+    --deep:#42000d;
+    --darkred:#25000a;
+
+    --line:#541522;
+    --line2:#321017;
+
+    --white:#f4eaea;
+    --text:#ddd0d0;
+    --muted:#9e8d90;
+    --dim:#625457;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    color:var(--text);
+
+    font-family:"Cormorant Garamond",serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 12%,
+            rgba(180,0,38,.17),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 60%,
+            rgba(180,0,38,.06),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(180,0,38,.05),
+            transparent 25%
+        ),
+        var(--black);
+}
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:0;
+
+    opacity:.12;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.04) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 95%
+        );
+}
+
+body::after{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 25%,
+            rgba(0,0,0,.72) 100%
+        );
+}
+
+/* =========================================================
+   SIDE ARCHITECTURE
+========================================================= */
+
+.side-line{
+    position:fixed;
+
+    top:0;
+    bottom:0;
+
+    width:1px;
+
+    z-index:20;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--line),
+            var(--bright),
+            var(--line),
+            transparent
+        );
+}
+
+.side-line.left{
+    left:27px;
+}
+
+.side-line.right{
+    right:27px;
+}
+
+.side-mark{
+    position:fixed;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    writing-mode:vertical-rl;
+
+    z-index:20;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:5px;
+
+    color:var(--dim);
+}
+
+.side-mark.left{
+    left:9px;
+}
+
+.side-mark.right{
+    right:9px;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+    height:82px;
+
+    padding:0 65px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--line);
+
+    position:relative;
+
+    z-index:30;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+}
+
+.brand{
+    color:var(--white);
+}
+
+.chapter{
+    color:var(--bright);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    width:min(1250px,88%);
+
+    min-height:760px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:2;
+
+    overflow:hidden;
+}
+
+.hero-number{
+    position:absolute;
+
+    right:2%;
+    top:50px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:190px;
+
+    font-weight:800;
+
+    line-height:1;
+
+    color:transparent;
+
+    -webkit-text-stroke:1px rgba(240,0,59,.12);
+
+    pointer-events:none;
+}
+
+.hero-content{
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    position:relative;
+
+    z-index:4;
+}
+
+.hero-kicker{
+    margin-bottom:22px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+
+    letter-spacing:6px;
+
+    color:var(--bright);
+}
+
+/* IMPORTANT:
+   TIME STONE IS ONE CLEAN TEXT ELEMENT.
+   No inline spans or overlays are used here.
+*/
+
+.hero h1{
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(62px,9vw,132px);
+
+    font-weight:800;
+
+    line-height:.9;
+
+    letter-spacing:6px;
+
+    color:var(--white);
+
+    text-shadow:
+        0 0 35px rgba(180,0,38,.18);
+}
+
+.hero h1 .red-title{
+    display:block;
+
+    margin-top:10px;
+
+    color:var(--bright);
+}
+
+/* =========================================================
+   CLOCK CORE
+========================================================= */
+
+.clock-wrap{
+    width:300px;
+    height:300px;
+
+    margin-top:60px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* outer rings */
+
+.clock-ring{
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+}
+
+.ring-one{
+    inset:0;
+
+    border:1px solid var(--line);
+
+    box-shadow:
+        0 0 50px rgba(180,0,38,.08);
+}
+
+.ring-two{
+    inset:19px;
+
+    border:1px solid var(--red);
+
+    border-left-color:transparent;
+    border-bottom-color:transparent;
+
+    transform:rotate(35deg);
+}
+
+.ring-three{
+    inset:39px;
+
+    border:1px dashed rgba(180,0,38,.55);
+
+    transform:rotate(-22deg);
+}
+
+.ring-four{
+    inset:61px;
+
+    border:1px solid var(--line);
+
+    box-shadow:
+        inset 0 0 35px rgba(180,0,38,.08);
+}
+
+/* clock ticks */
+
+.clock-ticks{
+    position:absolute;
+
+    inset:7px;
+
+    border-radius:50%;
+
+    background:
+        repeating-conic-gradient(
+            from 0deg,
+            var(--red) 0deg 1deg,
+            transparent 1deg 30deg
+        );
+
+    -webkit-mask:
+        radial-gradient(
+            circle,
+            transparent 0 89%,
+            black 90% 91%,
+            transparent 92%
+        );
+
+    mask:
+        radial-gradient(
+            circle,
+            transparent 0 89%,
+            black 90% 91%,
+            transparent 92%
+        );
+}
+
+/* cardinal marks */
+
+.clock-mark{
+    position:absolute;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    color:var(--muted);
+}
+
+.mark-12{
+    top:16px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.mark-3{
+    right:16px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.mark-6{
+    bottom:16px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.mark-9{
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+/* hands */
+
+.clock-hand{
+    position:absolute;
+
+    left:50%;
+    bottom:50%;
+
+    width:1px;
+
+    transform-origin:bottom center;
+
+    background:var(--bright);
+
+    box-shadow:
+        0 0 12px rgba(240,0,59,.65);
+}
+
+.hand-long{
+    height:78px;
+
+    transform:translateX(-50%) rotate(38deg);
+}
+
+.hand-short{
+    height:55px;
+
+    transform:translateX(-50%) rotate(-48deg);
+
+    background:var(--white);
+}
+
+/* center */
+
+.clock-center{
+    width:70px;
+    height:70px;
+
+    border:1px solid var(--bright);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(240,0,59,.2),
+            rgba(10,3,5,.95) 68%
+        );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    box-shadow:
+        0 0 30px rgba(240,0,59,.15),
+        inset 0 0 25px rgba(180,0,38,.15);
+}
+
+.clock-center::before{
+    content:"";
+
+    position:absolute;
+
+    inset:8px;
+
+    border:1px solid var(--line);
+}
+
+.clock-center span{
+    position:relative;
+
+    z-index:2;
+
+    font-family:"Cinzel",serif;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    color:var(--white);
+}
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.hero-description{
+    width:min(720px,90%);
+
+    margin-top:42px;
+
+    font-size:20px;
+
+    line-height:1.55;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    width:min(1100px,88%);
+
+    margin:0 auto 105px;
+
+    padding:9px;
+
+    border:1px solid var(--line);
+
+    position:relative;
+
+    z-index:2;
+}
+
+.intro-inner{
+    padding:54px 70px;
+
+    border:1px solid var(--line2);
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.08),
+            transparent 48%
+        ),
+        var(--panel);
+}
+
+.corner{
+    position:absolute;
+
+    width:36px;
+    height:36px;
+
+    z-index:5;
+}
+
+.corner::before,
+.corner::after{
+    content:"";
+
+    position:absolute;
+
+    background:var(--bright);
+}
+
+.corner::before{
+    width:100%;
+    height:1px;
+}
+
+.corner::after{
+    width:1px;
+    height:100%;
+}
+
+.corner.tl{
+    top:-1px;
+    left:-1px;
+}
+
+.corner.tr{
+    top:-1px;
+    right:-1px;
+
+    transform:rotate(90deg);
+}
+
+.corner.br{
+    bottom:-1px;
+    right:-1px;
+
+    transform:rotate(180deg);
+}
+
+.corner.bl{
+    bottom:-1px;
+    left:-1px;
+
+    transform:rotate(270deg);
+}
+
+.intro-label{
+    margin-bottom:18px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:var(--bright);
+}
+
+.intro h2{
+    margin-bottom:18px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:34px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+.intro p{
+    width:min(850px,100%);
+
+    margin:auto;
+
+    font-size:19px;
+
+    line-height:1.55;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   TIME CHAMBER
+========================================================= */
+
+.chamber{
+    width:min(1250px,88%);
+
+    margin:0 auto 120px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.chamber-heading{
+    text-align:center;
+
+    margin-bottom:48px;
+}
+
+.chamber-heading .small{
+    margin-bottom:15px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:var(--bright);
+}
+
+.chamber-heading h2{
+    font-family:"Cinzel",serif;
+
+    font-size:40px;
+
+    letter-spacing:3px;
+
+    color:var(--white);
+}
+
+/* =========================================================
+   TIMELINE FRAME
+========================================================= */
+
+.time-frame{
+    position:relative;
+
+    padding:18px;
+
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(180,0,38,.035),
+            transparent 30%,
+            transparent 70%,
+            rgba(180,0,38,.035)
+        ),
+        #050304;
+}
+
+.time-frame::before{
+    content:"";
+
+    position:absolute;
+
+    inset:7px;
+
+    border:1px solid rgba(180,0,38,.15);
+
+    pointer-events:none;
+}
+
+/* central timeline */
+
+.timeline{
+    position:absolute;
+
+    top:35px;
+    bottom:35px;
+
+    left:50%;
+
+    width:1px;
+
+    transform:translateX(-50%);
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--red) 12%,
+            var(--bright) 50%,
+            var(--red) 88%,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(240,0,59,.2);
+}
+
+/* =========================================================
+   ROLE BLOCK
+========================================================= */
+
+.role-block{
+    min-height:270px;
+
+    display:grid;
+
+    grid-template-columns:1fr 100px 1fr;
+
+    align-items:center;
+
+    position:relative;
+
+    padding:35px 25px;
+
+    border-bottom:1px solid var(--line2);
+}
+
+.role-block:last-child{
+    border-bottom:none;
+}
+
+/* alternate sides */
+
+.role-block:nth-child(even){
+    direction:rtl;
+}
+
+.role-block:nth-child(even) > *{
+    direction:ltr;
+}
+
+/* role content */
+
+.role-content{
+    width:100%;
+
+    padding:25px 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.09),
+            transparent 48%
+        ),
+        var(--panel);
+
+    border:1px solid var(--line);
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.35s ease;
+}
+
+.role-content::before{
+    content:"";
+
+    position:absolute;
+
+    inset:7px;
+
+    border:1px solid rgba(180,0,38,.12);
+
+    pointer-events:none;
+}
+
+.role-content:hover{
+    border-color:var(--bright);
+
+    box-shadow:
+        0 0 35px rgba(180,0,38,.1);
+
+    transform:translateY(-4px);
+}
+
+.role-number{
+    margin-bottom:12px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    color:var(--bright);
+}
+
+.role-content h3{
+    margin-bottom:9px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:28px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+.role-description{
+    margin-bottom:25px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    color:var(--dim);
+}
+
+/* =========================================================
+   CENTER TIME MARKER
+========================================================= */
+
+.time-marker{
+    width:72px;
+    height:72px;
+
+    margin:auto;
+
+    border:1px solid var(--red);
+
+    transform:rotate(45deg);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(180,0,38,.17),
+            rgba(8,3,5,.98) 65%
+        );
+
+    box-shadow:
+        0 0 25px rgba(180,0,38,.1);
+
+    position:relative;
+
+    z-index:5;
+}
+
+.time-marker::before{
+    content:"";
+
+    position:absolute;
+
+    inset:8px;
+
+    border:1px solid var(--line);
+}
+
+.time-marker span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+
+    font-size:15px;
+
+    color:var(--bright);
+
+    position:relative;
+
+    z-index:2;
+}
+
+/* =========================================================
+   MEMBER CARDS
+========================================================= */
+
+.members{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:9px;
+
+    position:relative;
+
+    z-index:3;
+}
+
+.member{
+    position:relative;
+
+    min-width:90px;
+
+    padding:11px 14px;
+
+    border:1px solid #5a1b28;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.13),
+            rgba(20,5,8,.94)
+        );
+
+    color:var(--white);
+
+    font-family:"Cinzel",serif;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    letter-spacing:1.2px;
+
+    transition:.3s ease;
+}
+
+.member::before{
+    content:"";
+
+    position:absolute;
+
+    top:-1px;
+
+    left:18px;
+    right:18px;
+
+    height:1px;
+
+    background:var(--bright);
+
+    box-shadow:0 0 7px var(--bright);
+}
+
+.member::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-1px;
+
+    left:30%;
+    right:30%;
+
+    height:1px;
+
+    background:var(--red);
+}
+
+.member:hover{
+    transform:translateY(-3px);
+
+    border-color:var(--bright);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(240,0,59,.24),
+            rgba(25,5,9,.96)
+        );
+
+    box-shadow:
+        0 0 20px rgba(240,0,59,.15);
+}
+
+/* =========================================================
+   TIME STRIP
+========================================================= */
+
+.time-strip{
+    margin-top:20px;
+
+    min-height:190px;
+
+    padding:35px;
+
+    border:1px solid var(--red);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(180,0,38,.12),
+            transparent 50%,
+            rgba(180,0,38,.08)
+        ),
+        #080506;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.time-strip::before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border:1px solid rgba(180,0,38,.07);
+
+    border-radius:50%;
+
+    pointer-events:none;
+}
+
+.time-strip .label{
+    margin-bottom:13px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:5px;
+
+    color:var(--bright);
+}
+
+.time-strip h3{
+    margin-bottom:10px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:31px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+.time-strip p{
+    width:min(760px,90%);
+
+    font-size:18px;
+
+    line-height:1.5;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+.closing{
+    width:min(900px,88%);
+
+    margin:0 auto 100px;
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.closing-symbol{
+    width:44px;
+    height:44px;
+
+    margin:0 auto 30px;
+
+    border:1px solid var(--red);
+
+    transform:rotate(45deg);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.closing-symbol span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+
+    color:var(--bright);
+}
+
+.closing h2{
+    margin-bottom:18px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:35px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+.closing p{
+    font-size:19px;
+
+    line-height:1.55;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation{
+    width:min(1250px,88%);
+
+    margin:0 auto 70px;
+
+    display:flex;
+
+    gap:20px;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.nav-button{
+    flex:1;
+
+    padding:20px 28px;
+
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.06),
+            transparent
+        ),
+        #080506;
+
+    color:var(--white);
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+.nav-button:hover{
+    border-color:var(--bright);
+
+    background:#100609;
+
+    box-shadow:
+        0 0 30px rgba(180,0,38,.12);
+}
+
+.nav-button span{
+    display:block;
+
+    margin-top:8px;
+
+    color:var(--bright);
+
+    font-size:8px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:27px 65px;
+
+    border-top:1px solid var(--line);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    position:relative;
+
+    z-index:2;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:var(--dim);
+}
+
+footer strong{
+    color:var(--bright);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:950px){
+
+    .side-line,
+    .side-mark{
+        display:none;
+    }
+
+    .topbar{
+        padding:0 30px;
+    }
+
+    .hero{
+        min-height:700px;
+    }
+
+    .hero-number{
+        font-size:130px;
+    }
+
+    .clock-wrap{
+        width:260px;
+        height:260px;
+    }
+
+    .role-block{
+        grid-template-columns:1fr;
+
+        gap:25px;
+
+        padding:35px 20px;
+    }
+
+    .timeline{
+        display:none;
+    }
+
+    .time-marker{
+        order:-1;
+    }
+}
+
+@media(max-width:680px){
+
+    .topbar{
+        height:70px;
+
+        padding:0 22px;
+
+        font-size:8px;
+    }
+
+    .topbar .chapter{
+        display:none;
+    }
+
+    .hero{
+        width:90%;
+
+        min-height:660px;
+    }
+
+    .hero-number{
+        top:60px;
+
+        right:0;
+
+        font-size:90px;
+    }
+
+    .hero h1{
+        font-size:53px;
+letter-spacing:4px;
+    }
+
+    .hero-description{
+        font-size:18px;
+    }
+
+    .clock-wrap{
+        width:210px;
+        height:210px;
+
+        margin-top:48px;
+    }
+
+    .hand-long{
+        height:55px;
+    }
+
+    .hand-short{
+        height:39px;
+    }
+
+    .clock-center{
+        width:58px;
+        height:58px;
+    }
+
+    .clock-center span{
+        font-size:9px;
+    }
+
+    .intro{
+        width:90%;
+    }
+
+    .intro-inner{
+        padding:38px 23px;
+    }
+
+    .intro h2{
+        font-size:26px;
+    }
+
+    .intro p{
+        font-size:17px;
+    }
+
+    .chamber{
+        width:90%;
+    }
+
+    .chamber-heading h2{
+        font-size:29px;
+    }
+
+    .time-frame{
+        padding:9px;
+    }
+
+    .role-block{
+        padding:28px 10px;
+    }
+
+    .role-content{
+        padding:28px 17px;
+    }
+
+    .role-content h3{
+        font-size:24px;
+    }
+
+    .member{
+        min-width:100px;
+
+        font-size:10px;
+    }
+
+    .time-strip{
+        padding:30px 18px;
+    }
+
+    .time-strip h3{
+        font-size:26px;
+    }
+
+    .navigation{
+        width:90%;
+
+        flex-direction:column;
+    }
+
+    .nav-button{
+        width:100%;
+    }
+
+    footer{
+        padding:25px;
+
+        flex-direction:column;
+
+        gap:10px;
+    }
+}
+
+@media(max-width:400px){
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .member{
+        min-width:85px;
+
+        padding:10px 11px;
+
+        font-size:9px;
+    }
+
+    .clock-wrap{
+        width:185px;
+        height:185px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =======================================================
+     SIDE ARCHITECTURE
+======================================================= -->
+
+<div class="side-line left"></div>
+<div class="side-line right"></div>
+
+<div class="side-mark left">
+    THE CELESTIAL OASIS
+</div>
+
+<div class="side-mark right">
+    TIME ARCHIVE
+</div>
+
+
+<!-- =======================================================
+     TOP BAR
+======================================================= -->
+
+<header class="topbar">
+
+    <div class="brand">
+        THE CELESTIAL OASIS
+    </div>
+
+    <div class="chapter">
+        CHAMBER VIII • THE TIME STONE
+    </div>
+
+</header>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section class="hero">
+
+    <div class="hero-number">
+        08
+    </div>
+
+    <div class="hero-content">
+
+        <div class="hero-kicker">
+            THE CHAMBER OF MOMENTS
+        </div>
+
+        <h1>
+            THE
+            <span class="red-title">TIME STONE</span>
+        </h1>
+
+        <p class="hero-description">
+            Some moments pass quietly.
+            Some become memories.
+            Some become stories people keep talking about.
+            This chamber belongs to the people who help
+            create those moments for everyone in TCO.
+        </p>
+
+
+        <!-- CLOCK -->
+
+        <div class="clock-wrap">
+
+            <div class="clock-ring ring-one"></div>
+            <div class="clock-ring ring-two"></div>
+            <div class="clock-ring ring-three"></div>
+            <div class="clock-ring ring-four"></div>
+
+            <div class="clock-ticks"></div>
+
+            <div class="clock-mark mark-12">
+                12
+            </div>
+
+            <div class="clock-mark mark-3">
+                03
+            </div>
+
+            <div class="clock-mark mark-6">
+                06
+            </div>
+
+            <div class="clock-mark mark-9">
+                09
+            </div>
+
+            <div class="clock-hand hand-long"></div>
+            <div class="clock-hand hand-short"></div>
+
+            <div class="clock-center">
+                <span>TIME</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     INTRO
+======================================================= -->
+
+<section class="intro">
+
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner br"></div>
+    <div class="corner bl"></div>
+
+    <div class="intro-inner">
+
+        <div class="intro-label">
+            ARCHIVE RECORD • 08
+        </div>
+
+        <h2>
+            THE PEOPLE BEHIND
+            THE <span style="color:var(--bright);">MOMENTS.</span>
+        </h2>
+
+        <p>
+            TCO is full of things that happen because someone
+            decided to make them happen. Hosts bring energy.
+            Judges bring fairness. Interviewers bring stories
+            and conversations. Every event, activity and little
+            moment adds another page to the history of the Oasis.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     TIME CHAMBER
+======================================================= -->
+
+<section class="chamber">
+
+    <div class="chamber-heading">
+
+        <div class="small">
+            TIME STONE • MOMENT ARCHIVE
+        </div>
+
+        <h2>
+            THE KEEPERS OF TIME
+        </h2>
+
+    </div>
+
+
+    <div class="time-frame">
+
+        <div class="timeline"></div>
+
+
+        <!-- =================================================
+             HOSTS
+        ================================================== -->
+
+        <article class="role-block">
+
+            <div class="role-content">
+
+                <div class="role-number">
+                    01 • THE VOICE
+                </div>
+
+                <h3>
+                    HOSTS
+                </h3>
+
+                <div class="role-description">
+                    THE PEOPLE WHO SET THE MOMENT IN MOTION
+                </div>
+
+                <div class="members">
+
+                    <div class="member">Eunmi</div>
+                    <div class="member">Aria</div>
+                    <div class="member">Eris</div>
+                    <div class="member">Amanda</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="time-marker">
+                <span>01</span>
+            </div>
+
+
+            <div></div>
+
+        </article>
+
+
+        <!-- =================================================
+             JUDGES
+        ================================================== -->
+
+        <article class="role-block">
+
+            <div></div>
+
+
+            <div class="time-marker">
+                <span>02</span>
+            </div>
+
+
+            <div class="role-content">
+
+                <div class="role-number">
+                    02 • THE BALANCE
+                </div>
+
+                <h3>
+                    JUDGES
+                </h3>
+
+                <div class="role-description">
+                    THE PEOPLE WHO KEEP THE MOMENT FAIR
+                </div>
+
+                <div class="members">
+
+                    <div class="member">Sleepykoala</div>
+                    <div class="member">Aria</div>
+                    <div class="member">Lyla</div>
+                    <div class="member">Amanda</div>
+                    <div class="member">Kayden</div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             INTERVIEWERS
+        ================================================== -->
+
+        <article class="role-block">
+
+            <div class="role-content">
+
+                <div class="role-number">
+                    03 • THE STORY
+                </div>
+
+                <h3>
+                    INTERVIEWERS
+                </h3>
+
+                <div class="role-description">
+                    THE PEOPLE WHO TURN CONVERSATIONS INTO MEMORIES
+                </div>
+
+                <div class="members">
+
+                    <div class="member">Vanz</div>
+                    <div class="member">Hsu</div>
+                    <div class="member">Siya</div>
+                    <div class="member">Liyah</div>
+                    <div class="member">Crystal</div>
+                    <div class="member">Ryan</div>
+                    <div class="member">Sami</div>
+                    <div class="member">Evie</div>
+                    <div class="member">Twila</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="time-marker">
+                <span>03</span>
+            </div>
+
+
+            <div></div>
+
+        </article>
+
+
+        <!-- =================================================
+             FEATURE STRIP
+        ================================================== -->
+
+        <div class="time-strip">
+
+            <div class="label">
+                THE ARCHIVE CONTINUES
+            </div>
+
+            <h3>
+                MOMENTS BECOME MEMORIES.
+            </h3>
+
+            <p>
+                What happens in TCO does not simply disappear.
+                It becomes part of the story — another event,
+                another conversation, another name remembered,
+                another moment that made the community what
+                it is today.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     CLOSING
+======================================================= -->
+
+<section class="closing">
+
+    <div class="closing-symbol">
+        <span>08</span>
+    </div>
+
+    <h2>
+        TIME MOVES. MEMORIES STAY.
+    </h2>
+
+    <p>
+        Every person listed here has helped create a moment
+        that someone else could remember. That is what makes
+        the Time Stone more than a clock. It is a record of
+        the people who gave TCO moments worth keeping.
+    </p>
+
+</section>
+
+
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
+
+<nav class="navigation">
+
+    <button
+        class="nav-button"
+        onclick="window.location.href='page7.html'">
+
+        ← BACK TO POWER STONE
+
+        <span>
+            CHAMBER VII
+        </span>
+
+    </button>
+
+
+    <button
+        class="nav-button"
+        onclick="window.location.href='page9.html'">
+
+        CONTINUE TO SPACE STONE →
+
+        <span>
+            CHAMBER IX
+        </span>
+
+    </button>
+
+</nav>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+    <div>
+        THE CELESTIAL OASIS
+    </div>
+
+    <div>
+        <strong>TIME STONE</strong>
+        • CHAMBER VIII
+    </div>
+
+</footer>
+
+
+</body>
+</html>

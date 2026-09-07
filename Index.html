@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Celestial Oasis — The Entry</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --black: #030303;
+    --stone: #111011;
+    --stone2: #181517;
+
+    --red: #b40026;
+    --bright: #ed0035;
+    --deep: #43000e;
+
+    --text: #eee5e4;
+    --muted: #a99999;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    /* FIX: page can scroll */
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background: var(--black);
+    color: var(--text);
+
+    font-family: "Cormorant Garamond", serif;
+}
+
+
+/* =========================
+   MAIN BACKGROUND
+========================= */
+
+.oasis {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding: 70px 25px 80px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(180, 0, 38, 0.16),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #030303,
+            #0c0507 50%,
+            #030303
+        );
+}
+
+.oasis-glow {
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    left: 50%;
+    top: 35%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(180, 0, 38, 0.13);
+
+    filter: blur(150px);
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   WELCOME CONTENT
+========================= */
+
+.welcome {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(1100px, 100%);
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.welcome-small {
+    font-family: "DM Mono", monospace;
+
+    font-size: 11px;
+    letter-spacing: 4px;
+
+    color: var(--bright);
+
+    margin-bottom: 18px;
+}
+
+.welcome h1 {
+    margin: 0;
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(36px, 6vw, 72px);
+
+    letter-spacing: 5px;
+
+    line-height: 1.05;
+}
+
+.welcome h1 span {
+    color: var(--bright);
+}
+
+.welcome-line {
+    width: 110px;
+    height: 1px;
+
+    margin: 28px auto;
+
+    background: var(--red);
+
+    box-shadow: 0 0 15px rgba(237, 0, 53, 0.5);
+}
+
+.welcome-text {
+    max-width: 760px;
+
+    margin: 0 auto 40px;
+
+    color: var(--muted);
+
+    font-size: 19px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+
+    width: 100%;
+
+    margin-top: 35px;
+}
+
+.card {
+    position: relative;
+
+    min-height: 175px;
+
+    padding: 30px 20px;
+
+    border: 1px solid rgba(180, 0, 38, 0.45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.025),
+            rgba(180,0,38,0.045)
+        );
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+    overflow: hidden;
+}
+
+.card::before,
+.card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    border-color: var(--bright);
+
+    pointer-events: none;
+}
+
+.card::before {
+    top: 8px;
+    left: 8px;
+
+    border-top: 1px solid;
+    border-left: 1px solid;
+}
+
+.card::after {
+    bottom: 8px;
+    right: 8px;
+
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    border-color: var(--bright);
+
+    box-shadow:
+        0 10px 35px rgba(180, 0, 38, 0.2);
+}
+
+.card-number {
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: var(--bright);
+
+    margin-bottom: 18px;
+}
+
+.card h2 {
+    margin: 0 0 10px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 20px;
+
+    letter-spacing: 2px;
+}
+
+.card p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   GRAND HALL BUTTON
+========================= */
+
+.grand-hall-button {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: min(470px, 100%);
+
+    min-height: 75px;
+
+    margin: 55px auto 0;
+
+    padding: 18px 28px;
+
+    border: 1px solid var(--bright);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,0.12),
+            rgba(0,0,0,0.6)
+        );
+
+    color: var(--text);
+
+    font-family: "Cinzel", serif;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+
+    /* Hidden until gates finish opening */
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(15px);
+}
+
+.grand-hall-button.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+.grand-hall-button:hover {
+    background: rgba(180, 0, 38, 0.25);
+
+    box-shadow:
+        0 0 30px rgba(237, 0, 53, 0.25);
+
+    transform: translateY(-3px);
+}
+
+.grand-hall-main {
+    font-size: 14px;
+
+    letter-spacing: 3px;
+}
+
+.grand-hall-sub {
+    margin-top: 7px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: var(--bright);
+}
+
+
+/* =========================
+   CASTLE
+========================= */
+
+.castle {
+    position: relative;
+
+    width: min(950px, 100%);
+
+    height: 180px;
+
+    margin: 0 auto 60px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-end;
+
+    filter:
+        drop-shadow(
+            0 20px 35px rgba(0,0,0,0.8)
+        );
+}
+
+.tower {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 120px;
+    height: 150px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #090909,
+            #191619,
+            #090909
+        );
+
+    border: 1px solid #2a2426;
+}
+
+.tower.left {
+    left: 5%;
+}
+
+.tower.right {
+    right: 5%;
+}
+
+.tower-roof {
+    position: absolute;
+
+    top: -45px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 0;
+
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+
+    border-bottom: 55px solid #10090b;
+}
+
+.tower-window {
+    width: 22px;
+    height: 48px;
+
+    margin: 40px auto;
+
+    border-radius: 12px 12px 0 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--deep),
+            var(--red)
+        );
+
+    box-shadow:
+        0 0 18px rgba(237,0,53,0.25);
+}
+
+.castle-center {
+    position: relative;
+
+    width: 420px;
+    height: 180px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0a0909,
+            #171316,
+            #0a0909
+        );
+
+    border: 1px solid #292326;
+}
+
+.castle-arch {
+    position: absolute;
+
+    width: 180px;
+    height: 150px;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    border: 1px solid #332b2e;
+
+    border-bottom: none;
+
+    border-radius: 100px 100px 0 0;
+}
+
+
+/* =========================
+   GATE
+========================= */
+
+.gate-wrapper {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 50;
+
+    background: #020202;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.gate-wrapper.open {
+    pointer-events: none;
+}
+
+.gate-frame {
+    position: absolute;
+
+    inset: 5%;
+
+    border: 1px solid rgba(180,0,38,0.5);
+
+    box-shadow:
+        inset 0 0 70px rgba(180,0,38,0.08);
+}
+
+
+/* Red light behind gate */
+
+.gate-light {
+    position: absolute;
+
+    width: 350px;
+    height: 600px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(180,0,38,0.5),
+            transparent 65%
+        );
+
+    filter: blur(35px);
+}
+
+
+/* Gate doors */
+
+.door {
+    position: absolute;
+
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #080708,
+            #171316,
+            #080708
+        );
+
+    border: 1px solid #2a2527;
+
+    transition:
+        transform 1.25s cubic-bezier(.77,0,.18,1);
+}
+
+.door.left {
+    left: 0;
+
+    transform-origin: left center;
+}
+
+.door.right {
+    right: 0;
+
+    transform-origin: right center;
+}
+
+.gate-wrapper.open .door.left {
+    transform: translateX(-100%);
+}
+
+.gate-wrapper.open .door.right {
+    transform: translateX(100%);
+}
+
+
+/* Gate decoration */
+
+.door::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 25px;
+
+    border: 1px solid rgba(180,0,38,0.3);
+}
+
+.door::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(180,0,38,0.35);
+
+    border-radius: 50%;
+}
+
+
+/* Gate text */
+
+.gate-content {
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    transition:
+        opacity 0.4s ease;
+}
+
+.gate-wrapper.open .gate-content {
+    opacity: 0;
+}
+
+.gate-small {
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: var(--bright);
+
+    margin-bottom: 20px;
+}
+
+.gate-content h1 {
+    margin: 0;
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(42px, 8vw, 90px);
+
+    letter-spacing: 8px;
+
+    line-height: 1;
+
+    text-shadow:
+        0 0 30px rgba(237,0,53,0.25);
+}
+
+.gate-content p {
+    margin: 20px auto 35px;
+
+    color: var(--muted);
+
+    font-size: 17px;
+
+    letter-spacing: 1px;
+}
+
+
+/* Open button */
+
+.open-button {
+    min-width: 230px;
+
+    padding: 15px 25px;
+
+    border: 1px solid var(--bright);
+
+    background: rgba(0,0,0,0.65);
+
+    color: var(--text);
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.open-button:hover {
+    background: rgba(180,0,38,0.2);
+
+    box-shadow:
+        0 0 30px rgba(237,0,53,0.25);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .oasis {
+        padding: 50px 18px 60px;
+    }
+
+    .castle {
+        height: 130px;
+
+        margin-bottom: 45px;
+    }
+
+    .castle-center {
+        width: 260px;
+        height: 130px;
+    }
+
+    .tower {
+        width: 75px;
+        height: 105px;
+    }
+
+    .tower.left {
+        left: 0;
+    }
+
+    .tower.right {
+        right: 0;
+    }
+
+    .tower-roof {
+        border-left-width: 45px;
+        border-right-width: 45px;
+        border-bottom-width: 38px;
+        top: -32px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .card {
+        min-height: 155px;
+
+        padding: 23px 15px;
+    }
+
+    .card h2 {
+        font-size: 17px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .grand-hall-button {
+        margin-top: 40px;
+
+        min-width: 0;
+
+        width: 100%;
+
+        padding: 18px 15px;
+    }
+
+    .grand-hall-main {
+        font-size: 12px;
+    }
+
+    .gate-content {
+        width: 90%;
+    }
+
+    .gate-content h1 {
+        font-size: 42px;
+
+        letter-spacing: 4px;
+    }
+
+    .gate-content p {
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome h1 {
+        font-size: 34px;
+
+        letter-spacing: 3px;
+    }
+
+    .welcome-text {
+        font-size: 17px;
+    }
+
+    .gate-content h1 {
+        font-size: 35px;
+    }
+
+    .gate-small {
+        letter-spacing: 3px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     GATE SCREEN
+========================= -->
+
+<div class="gate-wrapper" id="gate">
+
+    <div class="gate-light"></div>
+
+    <div class="gate-frame"></div>
+
+    <div class="door left"></div>
+    <div class="door right"></div>
+
+    <div class="gate-content">
+
+        <div class="gate-small">
+            THE CELESTIAL OASIS
+        </div>
+
+        <h1>
+            ENTER
+        </h1>
+
+        <p>
+            The gates are waiting.
+        </p>
+
+        <button class="open-button" onclick="openGates()">
+            OPEN THE GATES
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN PAGE
+========================= -->
+
+<main class="oasis">
+
+    <div class="oasis-glow"></div>
+
+    <section class="welcome">
+
+        <div class="castle">
+
+            <div class="tower left">
+                <div class="tower-roof"></div>
+                <div class="tower-window"></div>
+            </div>
+
+            <div class="castle-center">
+                <div class="castle-arch"></div>
+            </div>
+
+            <div class="tower right">
+                <div class="tower-roof"></div>
+                <div class="tower-window"></div>
+            </div>
+
+        </div>
+
+
+        <div class="welcome-small">
+            CHAMBER I • THE ENTRY
+        </div>
+
+        <h1>
+            YOU MADE IT THROUGH<br>
+            <span>THE GATES</span>
+        </h1>
+
+        <div class="welcome-line"></div>
+
+        <p class="welcome-text">
+            Welcome to The Celestial Oasis.
+            We are not just a community. We are a family.
+            A place people come back to, stay in, create in,
+            laugh in, disappear for a while, and somehow
+            always find their way back to.
+        </p>
+
+
+        <!-- =========================
+             FOUR CARDS
+        ========================= -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-number">
+                    01
+                </div>
+
+                <h2>
+                    CREATIVITY
+                </h2>
+
+                <p>
+                    Ideas, art, writing, designs,
+                    and people who love making things.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">
+                    02
+                </div>
+
+                <h2>
+                    CHAOS
+                </h2>
+
+                <p>
+                    The random conversations,
+                    stupid jokes, and moments
+                    nobody planned.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">
+                    03
+                </div>
+
+                <h2>
+                    MEMORIES
+                </h2>
+
+                <p>
+                    Events, conversations,
+                    late nights, celebrations,
+                    and everything in between.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">
+                    04
+                </div>
+
+                <h2>
+                    FAMILY
+                </h2>
+
+                <p>
+                    Different people,
+                    different stories,
+                    somehow one place.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             NEXT PAGE BUTTON
+        ========================= -->
+
+        <button
+            class="grand-hall-button"
+            id="grandHallButton"
+            onclick="goToGrandHall()"
+        >
+
+            <span class="grand-hall-main">
+                LET'S TAKE YOU TO THE GRAND HALL
+            </span>
+
+            <span class="grand-hall-sub">
+                CHAMBER II • THE JOURNEY CONTINUES
+            </span>
+
+        </button>
+
+    </section>
+
+</main>
+
+
+<script>
+
+function openGates() {
+
+    const gate = document.getElementById("gate");
+
+    const button = document.querySelector(".open-button");
+
+    const nextButton =
+        document.getElementById("grandHallButton");
+
+
+    /* Prevent clicking again */
+    button.disabled = true;
+
+
+    /* Open the doors */
+    gate.classList.add("open");
+
+
+    /*
+       Wait until the doors have almost
+       completely finished opening.
+    */
+
+    setTimeout(() => {
+
+        gate.style.opacity = "0";
+
+    }, 1000);
+
+
+    /*
+       Completely remove the gate
+       and reveal the next-page button.
+    */
+
+    setTimeout(() => {
+
+        gate.style.visibility = "hidden";
+
+        nextButton.classList.add("show");
+
+    }, 1350);
+
+}
+
+
+/* =========================
+   GO TO PAGE 2
+========================= */
+
+function goToGrandHall() {
+
+    window.location.href = "page2.html";
+
+}
+
+</script>
+
+</body>
+</html>

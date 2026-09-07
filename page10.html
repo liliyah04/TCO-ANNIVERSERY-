@@ -1,0 +1,926 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Celestial Oasis — II Years</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --black:#050405;
+    --black2:#090708;
+    --panel:#0d0a0b;
+    --panel2:#120c0e;
+    --red:#9e102c;
+    --bright:#d51d42;
+    --deep:#3c0712;
+    --text:#eee8e7;
+    --muted:#a99c9d;
+    --line:rgba(196,42,70,.32);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:var(--text);
+    font-family:"Cormorant Garamond",serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 50% 15%,rgba(120,0,25,.16),transparent 32%),
+        radial-gradient(circle at 15% 70%,rgba(100,0,20,.08),transparent 30%),
+        radial-gradient(circle at 85% 80%,rgba(100,0,20,.08),transparent 30%);
+    z-index:-3;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.08;
+    background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:70px 70px;
+    z-index:-2;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+    height:72px;
+    padding:0 6vw;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+    z-index:5;
+}
+
+.brand{
+    font-family:"Cinzel",serif;
+    font-size:12px;
+    letter-spacing:4px;
+    color:#d7cdce;
+}
+
+.chapter{
+    font-family:"DM Mono",monospace;
+    font-size:10px;
+    letter-spacing:2px;
+    color:#927f82;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:calc(100vh - 72px);
+    padding:90px 7vw 80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.hero-inner{
+    width:min(1120px,100%);
+    text-align:center;
+    position:relative;
+}
+
+/* Decorative lines */
+
+.hero-line{
+    width:90px;
+    height:1px;
+    background:var(--red);
+    margin:0 auto 28px;
+    position:relative;
+}
+
+.hero-line::before,
+.hero-line::after{
+    content:"";
+    position:absolute;
+    top:-3px;
+    width:7px;
+    height:7px;
+    border:1px solid var(--red);
+    transform:rotate(45deg);
+}
+
+.hero-line::before{
+    left:-4px;
+}
+
+.hero-line::after{
+    right:-4px;
+}
+
+.kicker{
+    font-family:"DM Mono",monospace;
+    font-size:10px;
+    letter-spacing:4px;
+    color:#a98b90;
+    margin-bottom:24px;
+}
+
+.hero h1{
+    font-family:"Cinzel",serif;
+    font-weight:500;
+    font-size:clamp(44px,7vw,94px);
+    line-height:1.05;
+    letter-spacing:3px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.hero h1 span{
+    display:block;
+    color:var(--bright);
+    margin-top:7px;
+}
+
+.hero-sub{
+    margin-top:24px;
+    font-family:"DM Mono",monospace;
+    font-size:11px;
+    letter-spacing:5px;
+    color:#88787a;
+}
+
+.hero-description{
+    max-width:650px;
+    margin:35px auto 0;
+    color:var(--muted);
+    font-size:19px;
+    line-height:1.65;
+}
+
+.scroll-mark{
+    position:absolute;
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:"DM Mono",monospace;
+    font-size:9px;
+    letter-spacing:3px;
+    color:#75686a;
+}
+
+.scroll-mark::after{
+    content:"";
+    display:block;
+    width:1px;
+    height:42px;
+    background:linear-gradient(var(--red),transparent);
+    margin:13px auto 0;
+}
+
+/* =========================
+   ANNIVERSARY SEAL
+========================= */
+
+.seal{
+    width:108px;
+    height:108px;
+    margin:46px auto 0;
+    border:1px solid rgba(196,42,70,.6);
+    outline:1px solid rgba(196,42,70,.18);
+    outline-offset:8px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.seal::before,
+.seal::after{
+    content:"";
+    position:absolute;
+    width:12px;
+    height:12px;
+    border:1px solid var(--red);
+    transform:rotate(45deg);
+    background:var(--black);
+}
+
+.seal::before{
+    top:-7px;
+    left:-7px;
+}
+
+.seal::after{
+    bottom:-7px;
+    right:-7px;
+}
+
+.seal-number{
+    font-family:"Cinzel",serif;
+    font-size:38px;
+    color:#eee;
+}
+
+.seal-text{
+    font-family:"DM Mono",monospace;
+    font-size:7px;
+    letter-spacing:3px;
+    color:var(--bright);
+    margin-top:4px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.section{
+    width:min(1120px,88%);
+    margin:0 auto;
+    padding:95px 0;
+}
+
+.section-heading{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:30px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:20px;
+    margin-bottom:40px;
+}
+
+.section-kicker{
+    font-family:"DM Mono",monospace;
+    font-size:9px;
+    letter-spacing:3px;
+    color:var(--bright);
+    margin-bottom:10px;
+}
+
+.section-heading h2{
+    font-family:"Cinzel",serif;
+    font-weight:500;
+    font-size:clamp(27px,4vw,48px);
+    letter-spacing:2px;
+}
+
+.section-number{
+    font-family:"Cinzel",serif;
+    font-size:58px;
+    color:#241316;
+    line-height:.8;
+}
+
+/* =========================
+   THANK YOU CARDS
+========================= */
+
+.thanks-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.thanks-card{
+    min-height:260px;
+    background:linear-gradient(145deg,var(--panel2),var(--panel));
+    border:1px solid var(--line);
+    padding:30px;
+    position:relative;
+    transition:.3s ease;
+}
+
+.thanks-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(213,29,66,.7);
+    box-shadow:0 18px 50px rgba(80,0,20,.18);
+}
+
+.thanks-card::before,
+.thanks-card::after{
+    content:"";
+    position:absolute;
+    width:13px;
+    height:13px;
+    border-color:var(--red);
+}
+
+.thanks-card::before{
+    top:8px;
+    left:8px;
+    border-top:1px solid;
+    border-left:1px solid;
+}
+
+.thanks-card::after{
+    right:8px;
+    bottom:8px;
+    border-right:1px solid;
+    border-bottom:1px solid;
+}
+
+.card-number{
+    font-family:"DM Mono",monospace;
+    font-size:9px;
+    color:var(--bright);
+    letter-spacing:2px;
+}
+
+.thanks-card h3{
+    font-family:"Cinzel",serif;
+    font-size:22px;
+    font-weight:500;
+    margin:35px 0 15px;
+}
+
+.thanks-card p{
+    font-size:17px;
+    line-height:1.6;
+    color:var(--muted);
+}
+
+/* =========================
+   HEART OF TCO
+========================= */
+
+.heart-section{
+    width:min(1120px,88%);
+    margin:0 auto;
+    padding:20px 0 110px;
+}
+
+.heart-box{
+    border:1px solid var(--line);
+    background:
+        linear-gradient(90deg,rgba(130,0,25,.08),transparent 30%,transparent 70%,rgba(130,0,25,.08)),
+        var(--panel);
+    position:relative;
+    padding:70px 9%;
+    text-align:center;
+}
+
+.heart-box::before,
+.heart-box::after{
+    content:"";
+    position:absolute;
+    inset:12px;
+    border:1px solid rgba(196,42,70,.12);
+    pointer-events:none;
+}
+
+.heart-label{
+    font-family:"DM Mono",monospace;
+    font-size:9px;
+    letter-spacing:4px;
+    color:var(--bright);
+}
+
+.heart-box h2{
+    font-family:"Cinzel",serif;
+    font-weight:500;
+    font-size:clamp(30px,5vw,60px);
+    margin:22px 0 25px;
+    letter-spacing:2px;
+}
+
+.heart-box h2 span{
+    color:var(--bright);
+}
+
+.heart-box p{
+    max-width:760px;
+    margin:auto;
+    font-size:21px;
+    line-height:1.7;
+    color:#b9adae;
+}
+
+/* =========================
+   GROWTH
+========================= */
+
+.growth-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.growth-card{
+    padding:38px;
+    min-height:230px;
+    border-top:2px solid var(--red);
+    background:#0b0809;
+}
+
+.growth-card .mini{
+    font-family:"DM Mono",monospace;
+    font-size:9px;
+    letter-spacing:3px;
+    color:#927e81;
+}
+
+.growth-card h3{
+    font-family:"Cinzel",serif;
+    font-size:25px;
+    font-weight:500;
+    margin:20px 0 14px;
+}
+
+.growth-card p{
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.65;
+}
+
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.final{
+    width:min(950px,88%);
+    margin:0 auto;
+    padding:110px 0 100px;
+    text-align:center;
+}
+
+.final-line{
+    width:1px;
+    height:70px;
+    background:linear-gradient(transparent,var(--red));
+    margin:0 auto 40px;
+}
+
+.final .kicker{
+    margin-bottom:18px;
+}
+
+.final h2{
+    font-family:"Cinzel",serif;
+    font-weight:500;
+    font-size:clamp(38px,6vw,72px);
+    letter-spacing:2px;
+    line-height:1.15;
+}
+
+.final h2 span{
+    color:var(--bright);
+}
+
+.final-message{
+    max-width:680px;
+    margin:30px auto 0;
+    font-size:21px;
+    line-height:1.75;
+    color:#b8abad;
+}
+
+.signature{
+    margin-top:42px;
+    font-family:"Cinzel",serif;
+    font-size:13px;
+    letter-spacing:5px;
+    color:#ddd1d2;
+}
+
+/* =========================
+   FINAL SEAL
+========================= */
+
+.final-seal{
+    width:150px;
+    height:150px;
+    margin:65px auto 0;
+    border:1px solid rgba(213,29,66,.65);
+    outline:1px solid rgba(213,29,66,.14);
+    outline-offset:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.final-seal::before,
+.final-seal::after{
+    content:"";
+    position:absolute;
+    width:18px;
+    height:18px;
+    border:1px solid var(--red);
+    transform:rotate(45deg);
+    background:var(--black);
+}
+
+.final-seal::before{
+    top:-10px;
+}
+
+.final-seal::after{
+    bottom:-10px;
+}
+
+.final-seal strong{
+    font-family:"Cinzel",serif;
+    font-size:48px;
+    font-weight:400;
+}
+
+.final-seal small{
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    letter-spacing:3px;
+    color:var(--bright);
+    margin-top:5px;
+}
+
+/* =========================
+   RETURN
+========================= */
+
+.return-area{
+    text-align:center;
+    padding:20px 0 110px;
+}
+
+.return-button{
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    gap:9px;
+    padding:18px 38px;
+    border:1px solid rgba(213,29,66,.6);
+    color:#eee;
+    text-decoration:none;
+    background:rgba(110,0,20,.08);
+    transition:.3s ease;
+}
+
+.return-button strong{
+    font-family:"Cinzel",serif;
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:500;
+}
+
+.return-button span{
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    letter-spacing:2px;
+    color:#8e7b7e;
+}
+
+.return-button:hover{
+    background:rgba(150,0,30,.16);
+    border-color:var(--bright);
+    transform:translateY(-3px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--line);
+    min-height:90px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+footer p{
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    letter-spacing:3px;
+    color:#685c5e;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px){
+
+    .topbar{
+        padding:0 5vw;
+    }
+
+    .hero{
+        min-height:calc(100vh - 72px);
+        padding:70px 6vw 100px;
+    }
+
+    .thanks-grid{
+        grid-template-columns:1fr;
+    }
+
+    .thanks-card{
+        min-height:auto;
+    }
+
+    .growth-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-heading{
+        align-items:flex-start;
+    }
+
+    .section-number{
+        font-size:42px;
+    }
+}
+
+@media(max-width:560px){
+
+    .topbar{
+        height:64px;
+    }
+
+    .brand{
+        font-size:9px;
+        letter-spacing:2px;
+    }
+
+    .chapter{
+        font-size:8px;
+        letter-spacing:1px;
+    }
+
+    .hero{
+        padding:55px 6vw 100px;
+    }
+
+    .hero h1{
+        font-size:39px;
+        letter-spacing:1px;
+    }
+
+    .hero-sub{
+        font-size:8px;
+        letter-spacing:3px;
+    }
+
+    .hero-description{
+        font-size:17px;
+    }
+
+    .section,
+    .heart-section,
+    .final{
+        width:88%;
+    }
+
+    .section{
+        padding:75px 0;
+    }
+
+    .heart-box{
+        padding:55px 25px;
+    }
+
+    .heart-box h2{
+        font-size:32px;
+    }
+
+    .heart-box p{
+        font-size:18px;
+    }
+
+    .growth-card{
+        padding:28px;
+    }
+
+    .final{
+        padding:80px 0;
+    }
+
+    .final h2{
+        font-size:38px;
+    }
+
+    .final-message{
+        font-size:18px;
+    }
+
+    .return-area{
+        padding-bottom:80px;
+    }
+
+    .return-button{
+        width:90%;
+    }
+}
+</style></head><body><!-- TOP BAR --><header class="topbar">
+    <div class="brand">THE CELESTIAL OASIS</div>
+    <div class="chapter">FINAL CHAMBER • II YEARS</div>
+</header><!-- HERO --><section class="hero"><div class="hero-inner">
+
+    <div class="hero-line"></div>
+
+    <div class="kicker">THE FINAL CHAPTER • 2024 — 2026</div>
+
+    <h1>
+        HAPPY SECOND
+        <span>ANNIVERSARY</span>
+    </h1>
+
+    <div class="hero-sub">
+        THE CELESTIAL OASIS
+    </div>
+
+    <p class="hero-description">
+        Two years of people, memories, creativity and countless little moments
+        that slowly became something much bigger than any of us could have planned.
+    </p>
+
+    <div class="seal">
+        <div class="seal-number">II</div>
+        <div class="seal-text">YEARS</div>
+    </div>
+
+</div>
+
+<div class="scroll-mark">
+    CONTINUE
+</div>
+
+</section><!-- THANK YOU --><section class="section"><div class="section-heading">
+    <div>
+        <div class="section-kicker">A NOTE OF GRATITUDE</div>
+        <h2>THIS IS FOR YOU.</h2>
+    </div>
+
+    <div class="section-number">01</div>
+</div>
+
+<div class="thanks-grid">
+
+    <article class="thanks-card">
+        <div class="card-number">01 • EVERY MEMBER</div>
+
+        <h3>THANK YOU FOR BEING HERE.</h3>
+
+        <p>
+            Whether you joined at the beginning or found TCO somewhere along
+            the way, your presence became part of its story.
+        </p>
+    </article>
+
+
+    <article class="thanks-card">
+        <div class="card-number">02 • EVERY CONTRIBUTION</div>
+
+        <h3>EVERYTHING COUNTS.</h3>
+
+        <p>
+            A design. A message. An event. A conversation. A small idea.
+            Even the things that seemed insignificant helped shape this place.
+        </p>
+    </article>
+
+
+    <article class="thanks-card">
+        <div class="card-number">03 • THE COMMUNITY</div>
+
+        <h3>YOU MADE IT MATTER.</h3>
+
+        <p>
+            TCO could grow because people kept giving it reasons to exist,
+            return to, create in and call their own.
+        </p>
+    </article>
+
+</div>
+
+</section><!-- HEART --><section class="heart-section"><div class="heart-box">
+
+    <div class="heart-label">THE HEART OF THIS ANNIVERSARY</div>
+
+    <h2>
+        TWO YEARS.
+        <span>ONE COMMUNITY.</span>
+    </h2>
+
+    <p>
+        Looking back, it is easy to count two years in dates and milestones.
+        But the real story is in the people. The ones who stayed, the ones
+        who joined, the ones who created, helped, laughed, talked, listened
+        and simply showed up.
+    </p>
+
+</div>
+
+</section><!-- GROWTH --><section class="section"><div class="section-heading">
+    <div>
+        <div class="section-kicker">FROM HERE ONWARD</div>
+        <h2>HERE'S TO WHAT COMES NEXT.</h2>
+    </div>
+
+    <div class="section-number">02</div>
+</div>
+
+
+<div class="growth-grid">
+
+    <article class="growth-card">
+
+        <div class="mini">LOOKING BACK</div>
+
+        <h3>TWO YEARS OF TCO.</h3>
+
+        <p>
+            Two years of building something together. Two years of memories,
+            changes, chaos, creativity and moments that made this community
+            what it is today.
+        </p>
+
+    </article>
+
+
+    <article class="growth-card">
+
+        <div class="mini">LOOKING AHEAD</div>
+
+        <h3>MAY IT KEEP GROWING.</h3>
+
+        <p>
+            May TCO continue to grow, welcome new people, create new memories
+            and become even more meaningful with every year that passes.
+        </p>
+
+    </article>
+
+</div>
+
+</section><!-- FINAL MESSAGE --><section class="final"><div class="final-line"></div>
+
+<div class="kicker">AND FINALLY...</div>
+
+<h2>
+    HAPPY SECOND
+    <span>ANNIVERSARY.</span>
+</h2>
+
+<p class="final-message">
+    To everyone who has ever been a part of TCO — thank you.
+    Your presence alone has contributed to this community in ways you may
+    never realise. Every person has left something behind, and together,
+    those little pieces became the TCO we know today.
+    <br><br>
+    So here's to another year. And then another.
+    To more people, more memories, more laughter, more creativity,
+    and more reasons to keep this place alive.
+    <br><br>
+    <strong>Happy second anniversary, TCO.</strong>
+    <br>
+    May this only be the beginning.
+</p>
+
+<div class="signature">
+    WITH GRATITUDE • THE CELESTIAL OASIS
+</div>
+
+
+<div class="final-seal">
+    <strong>II</strong>
+    <small>TCO • YEARS</small>
+</div>
+
+</section><!-- RETURN --><div class="return-area"><a href="Index.html" class="return-button">
+    <strong>↺ RETURN TO THE GATES</strong>
+    <span>BEGIN THE JOURNEY AGAIN</span>
+</a>
+
+</div><footer>
+    <p>
+        THE CELESTIAL OASIS • SECOND ANNIVERSARY • 2026
+    </p>
+</footer></body>
+</html>

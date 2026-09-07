@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Celestial Oasis — Space Stone</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#020202;
+    --black2:#080506;
+    --panel:#0d090b;
+    --panel2:#12090d;
+
+    --red:#a90027;
+    --bright:#f0003b;
+    --deep:#43000e;
+
+    --line:#551522;
+    --line2:#321017;
+
+    --white:#f5eaea;
+    --text:#ddd0d0;
+    --muted:#9f8e91;
+    --dim:#625357;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    color:var(--text);
+
+    font-family:"Cormorant Garamond",serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 12%,
+            rgba(180,0,38,.16),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 15% 55%,
+            rgba(180,0,38,.06),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(180,0,38,.05),
+            transparent 25%
+        ),
+        var(--black);
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+    z-index:0;
+
+    opacity:.11;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.04) 1px,
+            transparent 1px
+        );
+
+    background-size:60px 60px;
+}
+
+body::after{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+    z-index:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 28%,
+            rgba(0,0,0,.78) 100%
+        );
+}
+
+/* =========================================================
+   SIDE LINES
+========================================================= */
+
+.side-line{
+    position:fixed;
+
+    top:0;
+    bottom:0;
+
+    width:1px;
+
+    z-index:20;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--line),
+            var(--bright),
+            var(--line),
+            transparent
+        );
+}
+
+.side-line.left{
+    left:28px;
+}
+
+.side-line.right{
+    right:28px;
+}
+
+.side-label{
+    position:fixed;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    writing-mode:vertical-rl;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:5px;
+
+    color:var(--dim);
+
+    z-index:20;
+}
+
+.side-label.left{
+    left:10px;
+}
+
+.side-label.right{
+    right:10px;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+    height:82px;
+
+    padding:0 65px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--line);
+
+    position:relative;
+    z-index:10;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+}
+
+.brand{
+    color:var(--white);
+}
+
+.chapter{
+    color:var(--bright);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    width:min(1250px,88%);
+
+    min-height:760px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+    z-index:2;
+
+    overflow:hidden;
+}
+
+.hero-number{
+    position:absolute;
+
+    top:55px;
+    right:2%;
+
+    font-family:"Cinzel",serif;
+
+    font-size:190px;
+    font-weight:800;
+
+    line-height:1;
+
+    color:transparent;
+
+    -webkit-text-stroke:1px rgba(240,0,59,.12);
+
+    pointer-events:none;
+}
+
+.hero-content{
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    position:relative;
+    z-index:3;
+}
+
+.kicker{
+    margin-bottom:22px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+
+    letter-spacing:6px;
+
+    color:var(--bright);
+}
+
+.hero h1{
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(55px,9vw,125px);
+
+    font-weight:800;
+
+    line-height:.92;
+
+    letter-spacing:5px;
+
+    color:var(--white);
+
+    text-shadow:
+        0 0 35px rgba(180,0,38,.2);
+}
+
+.hero h1 span{
+    display:block;
+
+    margin-top:12px;
+
+    color:var(--bright);
+}
+
+.hero-description{
+    width:min(700px,90%);
+
+    margin-top:42px;
+
+    font-size:20px;
+
+    line-height:1.55;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   SPACE CORE
+========================================================= */
+
+.space-core{
+    width:270px;
+    height:270px;
+
+    margin-top:58px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.core-ring{
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+}
+
+.core-ring.one{
+    inset:0;
+
+    border:1px solid var(--line);
+
+    box-shadow:
+        0 0 50px rgba(180,0,38,.08);
+}
+
+.core-ring.two{
+    inset:20px;
+
+    border:1px solid var(--red);
+
+    border-top-color:transparent;
+    border-bottom-color:transparent;
+
+    transform:rotate(32deg);
+}
+
+.core-ring.three{
+    inset:42px;
+
+    border:1px dashed rgba(240,0,59,.45);
+
+    transform:rotate(-25deg);
+}
+
+.core-ring.four{
+    inset:63px;
+
+    border:1px solid var(--line2);
+}
+
+.core-square{
+    width:105px;
+    height:105px;
+
+    transform:rotate(45deg);
+
+    border:1px solid var(--bright);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(240,0,59,.18),
+            rgba(8,3,5,.97) 68%
+        );
+
+    box-shadow:
+        0 0 35px rgba(240,0,59,.13),
+        inset 0 0 25px rgba(180,0,38,.12);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.core-square::before{
+    content:"";
+
+    position:absolute;
+
+    inset:10px;
+
+    border:1px solid var(--line);
+}
+
+.core-square span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+
+    font-size:14px;
+
+    letter-spacing:3px;
+
+    color:var(--white);
+
+    position:relative;
+    z-index:2;
+}
+
+.core-mark{
+    position:absolute;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:7px;
+
+    letter-spacing:3px;
+
+    color:var(--dim);
+}
+
+.core-mark.top{
+    top:5px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.core-mark.bottom{
+    bottom:5px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.core-mark.left{
+    left:4px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.core-mark.right{
+    right:4px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    width:min(1080px,88%);
+
+    margin:0 auto 100px;
+
+    padding:9px;
+
+    border:1px solid var(--line);
+
+    position:relative;
+
+    z-index:2;
+}
+
+.intro-inner{
+    padding:55px 70px;
+
+    border:1px solid var(--line2);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.08),
+            transparent 50%
+        ),
+        var(--panel);
+
+    text-align:center;
+}
+
+.corner{
+    position:absolute;
+
+    width:38px;
+    height:38px;
+
+    z-index:3;
+}
+
+.corner::before,
+.corner::after{
+    content:"";
+
+    position:absolute;
+
+    background:var(--bright);
+}
+
+.corner::before{
+    width:100%;
+    height:1px;
+}
+
+.corner::after{
+    width:1px;
+    height:100%;
+}
+
+.corner.tl{
+    top:-1px;
+    left:-1px;
+}
+
+.corner.tr{
+    top:-1px;
+    right:-1px;
+    transform:rotate(90deg);
+}
+
+.corner.br{
+    bottom:-1px;
+    right:-1px;
+    transform:rotate(180deg);
+}
+
+.corner.bl{
+    bottom:-1px;
+    left:-1px;
+    transform:rotate(270deg);
+}
+
+.intro-label{
+    margin-bottom:18px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:var(--bright);
+}
+
+.intro h2{
+    margin-bottom:18px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:35px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+.intro p{
+    width:min(820px,100%);
+
+    margin:auto;
+
+    font-size:19px;
+
+    line-height:1.55;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   DEPARTMENT AREA
+========================================================= */
+
+.departments{
+    width:min(1250px,88%);
+
+    margin:0 auto 120px;
+
+    position:relative;
+    z-index:2;
+}
+
+.section-heading{
+    text-align:center;
+
+    margin-bottom:55px;
+}
+
+.section-heading .small{
+    margin-bottom:14px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:var(--bright);
+}
+
+.section-heading h2{
+    font-family:"Cinzel",serif;
+
+    font-size:42px;
+
+    letter-spacing:3px;
+
+    color:var(--white);
+}
+
+/* =========================================================
+   DEPARTMENT CARD
+========================================================= */
+
+.department{
+    margin-bottom:35px;
+
+    padding:10px;
+
+    border:1px solid var(--line);
+
+    background:#050304;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.department:last-child{
+    margin-bottom:0;
+}
+
+.department::before{
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    border:1px solid rgba(180,0,38,.07);
+
+    border-radius:50%;
+
+    top:-220px;
+    right:-130px;
+
+    pointer-events:none;
+}
+
+.department-inner{
+    padding:35px 38px 42px;
+
+    border:1px solid var(--line2);
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.07),
+            transparent 45%
+        ),
+        var(--panel);
+}
+
+/* =========================================================
+   DEPARTMENT HEADER
+========================================================= */
+
+.department-header{
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+    padding-bottom:28px;
+
+    margin-bottom:32px;
+
+    border-bottom:1px solid var(--line2);
+}
+
+.department-number{
+    width:58px;
+    height:58px;
+
+    flex-shrink:0;
+
+    border:1px solid var(--red);
+
+    transform:rotate(45deg);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#090406;
+}
+
+.department-number span{
+    transform:rotate(-45deg);
+
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+
+    color:var(--bright);
+
+    letter-spacing:2px;
+}
+
+.department-title{
+    text-align:left;
+}
+
+.department-title .label{
+    margin-bottom:6px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    color:var(--dim);
+}
+
+.department-title h3{
+    font-family:"Cinzel",serif;
+
+    font-size:30px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+/* =========================================================
+   MEMBERS GRID
+   IMPORTANT:
+   Proper rows + comfortable cards.
+========================================================= */
+
+.members-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+    gap:16px;
+
+    width:100%;
+}
+
+/* =========================================================
+   MEMBER CARD
+========================================================= */
+
+.member{
+    min-height:70px;
+
+    padding:18px 15px;
+
+    border:1px solid #551722;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.13),
+            rgba(14,5,8,.96)
+        );
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+.member::before{
+    content:"";
+
+    position:absolute;
+
+    top:-1px;
+
+    left:22px;
+    right:22px;
+
+    height:1px;
+
+    background:var(--bright);
+
+    box-shadow:
+        0 0 8px rgba(240,0,59,.55);
+}
+
+.member::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-1px;
+
+    left:35%;
+    right:35%;
+
+    height:1px;
+
+    background:var(--red);
+}
+
+.member-name{
+    font-family:"Cinzel",serif;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    letter-spacing:1.2px;
+
+    color:var(--white);
+
+    position:relative;
+    z-index:2;
+}
+
+.member:hover{
+    transform:translateY(-4px);
+
+    border-color:var(--bright);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(240,0,59,.22),
+            rgba(20,5,9,.98)
+        );
+
+    box-shadow:
+        0 0 25px rgba(240,0,59,.13);
+}
+
+/* =========================================================
+   DEPARTMENT FOOTER
+========================================================= */
+
+.department-footer{
+    margin-top:28px;
+
+    padding-top:18px;
+
+    border-top:1px solid var(--line2);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:var(--dim);
+}
+
+.department-footer strong{
+    color:var(--bright);
+}
+
+/* =========================================================
+   FEATURE STRIP
+========================================================= */
+
+.space-strip{
+    width:min(1100px,88%);
+
+    min-height:190px;
+
+    margin:0 auto 105px;
+
+    padding:35px;
+
+    border:1px solid var(--red);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(180,0,38,.12),
+            transparent 50%,
+            rgba(180,0,38,.08)
+        ),
+        #080506;
+}
+
+.space-strip::before,
+.space-strip::after{
+    content:"";
+
+    position:absolute;
+
+    border:1px solid rgba(180,0,38,.08);
+
+    border-radius:50%;
+
+    pointer-events:none;
+}
+
+.space-strip::before{
+    width:350px;
+    height:350px;
+}
+
+.space-strip::after{
+    width:500px;
+    height:500px;
+}
+
+.space-strip .label{
+    margin-bottom:12px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:5px;
+
+    color:var(--bright);
+}
+
+.space-strip h3{
+    margin-bottom:10px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:32px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+
+    position:relative;
+    z-index:2;
+}
+
+.space-strip p{
+    width:min(760px,90%);
+
+    font-size:18px;
+
+    line-height:1.5;
+
+    color:var(--muted);
+
+    position:relative;
+    z-index:2;
+}
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+.closing{
+    width:min(900px,88%);
+
+    margin:0 auto 100px;
+
+    text-align:center;
+
+    position:relative;
+    z-index:2;
+}
+
+.closing-symbol{
+    width:48px;
+    height:48px;
+
+    margin:0 auto 30px;
+
+    border:1px solid var(--red);
+
+    transform:rotate(45deg);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.closing-symbol span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+
+    font-size:13px;
+
+    color:var(--bright);
+}
+
+.closing h2{
+    margin-bottom:18px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:36px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+.closing p{
+    font-size:19px;
+
+    line-height:1.55;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation{
+    width:min(1250px,88%);
+
+    margin:0 auto 70px;
+
+    display:flex;
+
+    gap:20px;
+
+    position:relative;
+    z-index:2;
+}
+
+.nav-button{
+    flex:1;
+
+    padding:21px 28px;
+
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.06),
+            transparent
+        ),
+        #080506;
+
+    color:var(--white);
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+.nav-button:hover{
+    border-color:var(--bright);
+
+    background:#100609;
+
+    box-shadow:
+        0 0 30px rgba(180,0,38,.12);
+}
+
+.nav-button span{
+    display:block;
+
+    margin-top:8px;
+
+    color:var(--bright);
+
+    font-size:8px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:28px 65px;
+
+    border-top:1px solid var(--line);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    position:relative;
+    z-index:2;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:var(--dim);
+}
+
+footer strong{
+    color:var(--bright);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+    .side-line,
+    .side-label{
+        display:none;
+    }
+
+    .topbar{
+        padding:0 30px;
+    }
+
+    .hero{
+        min-height:700px;
+    }
+
+    .hero-number{
+        font-size:140px;
+    }
+
+    .members-grid{
+        grid-template-columns:
+            repeat(3,minmax(0,1fr));
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+    .topbar{
+        height:70px;
+
+        padding:0 22px;
+
+        font-size:8px;
+    }
+
+    .chapter{
+        display:none;
+    }
+
+    .hero{
+        width:90%;
+
+        min-height:650px;
+    }
+
+    .hero-number{
+        top:65px;
+
+        right:0;
+
+        font-size:90px;
+    }
+
+    .hero h1{
+        font-size:52px;
+
+        letter-spacing:3px;
+    }
+
+    .hero-description{
+        font-size:18px;
+    }
+
+    .space-core{
+        width:235px;
+        height:235px;
+    }
+
+    .intro{
+        width:92%;
+    }
+
+    .intro-inner{
+        padding:42px 25px;
+    }
+
+    .intro h2{
+        font-size:28px;
+    }
+
+    .intro p{
+        font-size:17px;
+    }
+
+    .departments{
+        width:92%;
+    }
+
+    .section-heading h2{
+        font-size:32px;
+    }
+
+    .department{
+        padding:7px;
+    }
+
+    .department-inner{
+        padding:27px 20px 32px;
+    }
+
+    .department-header{
+        gap:17px;
+    }
+
+    .department-number{
+        width:48px;
+        height:48px;
+    }
+
+    .department-title h3{
+        font-size:24px;
+    }
+
+    .members-grid{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+
+        gap:12px;
+    }
+
+    .member{
+        min-height:66px;
+
+        padding:15px 10px;
+    }
+
+    .member-name{
+        font-size:11px;
+
+        letter-spacing:.8px;
+    }
+
+    .department-footer{
+        flex-direction:column;
+
+        gap:8px;
+
+        text-align:center;
+    }
+
+    .space-strip{
+        width:92%;
+
+        padding:30px 20px;
+    }
+
+    .space-strip h3{
+        font-size:27px;
+    }
+
+    .navigation{
+        width:92%;
+
+        flex-direction:column;
+    }
+
+    footer{
+        padding:25px 22px;
+
+        flex-direction:column;
+
+        gap:10px;
+
+        text-align:center;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:430px){
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .space-core{
+        width:205px;
+        height:205px;
+    }
+
+    .core-square{
+        width:88px;
+        height:88px;
+    }
+
+    .members-grid{
+        grid-template-columns:1fr;
+    }
+
+    .member{
+        min-height:62px;
+    }
+
+    .department-title h3{
+      font-size:21px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="side-line left"></div>
+<div class="side-line right"></div>
+
+<div class="side-label left">
+    THE CELESTIAL OASIS
+</div>
+
+<div class="side-label right">
+    SPACE STONE
+</div>
+
+
+<!-- =====================================================
+     TOP BAR
+===================================================== -->
+
+<header class="topbar">
+
+    <div class="brand">
+        THE CELESTIAL OASIS
+    </div>
+
+    <div class="chapter">
+        CHAMBER IX • THE SPACE STONE
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-number">
+        IX
+    </div>
+
+    <div class="hero-content">
+
+        <div class="kicker">
+            THE CHAMBER OF CONNECTION
+        </div>
+
+        <h1>
+            THE
+            <span>SPACE STONE</span>
+        </h1>
+
+        <div class="space-core">
+
+            <div class="core-ring one"></div>
+            <div class="core-ring two"></div>
+            <div class="core-ring three"></div>
+            <div class="core-ring four"></div>
+
+            <div class="core-mark top">
+                TCO
+            </div>
+
+            <div class="core-mark bottom">
+                IX
+            </div>
+
+            <div class="core-mark left">
+                02
+            </div>
+
+            <div class="core-mark right">
+                26
+            </div>
+
+            <div class="core-square">
+                <span>SPACE</span>
+            </div>
+
+        </div>
+
+        <p class="hero-description">
+            The final stone is dedicated to the people who help TCO
+            stay active, organised, visible and connected.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="intro">
+
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner br"></div>
+    <div class="corner bl"></div>
+
+    <div class="intro-inner">
+
+        <div class="intro-label">
+            ARCHIVE IX • THE PEOPLE
+        </div>
+
+        <h2>
+            THE SPACE STONE
+        </h2>
+
+        <p>
+            Every part of a community needs people behind it.
+            From editing and watching over things to promotion and
+            account work, these roles help keep TCO moving.
+            This chamber belongs to them.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DEPARTMENTS
+===================================================== -->
+
+<section class="departments">
+
+    <div class="section-heading">
+
+        <div class="small">
+            THE FINAL STONE • THE PEOPLE WITHIN IT
+        </div>
+
+        <h2>
+            THE DEPARTMENTS
+        </h2>
+
+    </div>
+
+
+    <!-- =================================================
+         EDITORS
+    ================================================== -->
+
+    <article class="department">
+
+        <div class="department-inner">
+
+            <div class="department-header">
+
+                <div class="department-number">
+                    <span>01</span>
+                </div>
+
+                <div class="department-title">
+
+                    <div class="label">
+                        SPACE STONE • DEPARTMENT I
+                    </div>
+
+                    <h3>
+                        EDITORS
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="members-grid">
+
+                <div class="member">
+                    <span class="member-name">Eunmi</span>
+                </div>
+
+                <div class="member">
+                    <span class="member-name">Aria</span>
+                </div>
+
+                <div class="member">
+                    <span class="member-name">Kira</span>
+                </div>
+
+            </div>
+
+
+            <div class="department-footer">
+
+                <span>
+                    PEOPLE WHO SHAPE THE FINAL DETAILS
+                </span>
+
+                <strong>
+                    03 MEMBERS
+                </strong>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         WATCHERS
+    ================================================== -->
+
+    <article class="department">
+
+        <div class="department-inner">
+
+            <div class="department-header">
+
+                <div class="department-number">
+                    <span>02</span>
+                </div>
+
+                <div class="department-title">
+
+                    <div class="label">
+                        SPACE STONE • DEPARTMENT II
+                    </div>
+
+                    <h3>
+                        WATCHERS
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="members-grid">
+
+                <div class="member">
+                    <span class="member-name">Siya</span>
+                </div>
+
+                <div class="member">
+                    <span class="member-name">Davvy</span>
+                </div>
+
+                <div class="member">
+                    <span class="member-name">Hsu</span>
+                </div>
+
+                <div class="member">
+                    <span class="member-name">Luna</span>
+                </div>
+
+                <div class="member">
+                    <span class="member-name">Vinnie</span>
+                </div>
+
+            </div>
+
+
+            <div class="department-footer">
+
+                <span>
+                    PEOPLE WHO KEEP AN EYE ON THINGS
+                </span>
+
+                <strong>
+                    05 MEMBERS
+                </strong>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         PROMOTERS
+    ================================================== -->
+
+    <article class="department">
+
+        <div class="department-inner">
+
+            <div class="department-header">
+
+                <div class="department-number">
+                    <span>03</span>
+                </div>
+
+                <div class="department-title">
+
+                    <div class="label">
+                        SPACE STONE • DEPARTMENT III
+                    </div>
+
+                    <h3>
+                        PROMOTERS
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="members-grid">
+
+                <div class="member">
+                    <span class="member-name">Eris</span>
+                </div>
+
+                <div class="member">
+                    <span class="member-name">Siya</span>
+                </div>
+
+                <div class="member">
+                    <span class="member-name">Luna</span>
+                </div>
+
+            </div>
+
+
+            <div class="department-footer">
+
+                <span>
+                    PEOPLE WHO HELP TCO BE SEEN
+                </span>
+
+                <strong>
+                    03 MEMBERS
+                </strong>
+
+            </div>
+
+        </div>
+
+    </article>
+
+
+    <!-- =================================================
+         ACCOUNT RATERS
+    ================================================== -->
+
+    <article class="department">
+
+        <div class="department-inner">
+
+            <div class="department-header">
+
+                <div class="department-number">
+                    <span>04</span>
+                </div>
+
+                <div class="department-title">
+
+                    <div class="label">
+                        SPACE STONE • DEPARTMENT IV
+                    </div>
+
+                    <h3>
+                        ACCOUNT RATERS
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="members-grid">
+
+                <div class="member">
+                    <span class="member-name">Liyah</span>
+                </div>
+
+                <div class="member">
+                    <span class="member-name">Siya</span>
+                </div>
+
+            </div>
+
+
+            <div class="department-footer">
+
+                <span>
+                    PEOPLE WHO HANDLE THE ACCOUNT WORK
+                </span>
+
+                <strong>
+                    02 MEMBERS
+                </strong>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURE STRIP
+===================================================== -->
+
+<section class="space-strip">
+
+    <div class="label">
+        ARCHIVE RECORD • IX
+    </div>
+
+    <h3>
+        ONE COMMUNITY. MANY HANDS.
+    </h3>
+
+    <p>
+        Every role has its own place, but every contribution becomes
+        part of the same TCO story.
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     CLOSING
+===================================================== -->
+
+<section class="closing">
+
+    <div class="closing-symbol">
+        <span>IX</span>
+    </div>
+
+    <h2>
+        THE STONE IS COMPLETE.
+    </h2>
+
+    <p>
+        From the first chamber to this final stone, every person
+        has added something to the Oasis. The work may look
+        different from one role to another, but together it is
+        what keeps TCO alive.
+    </p>
+
+</section>
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav class="navigation">
+
+    <button
+        class="nav-button"
+        onclick="window.location.href='page8.html'">
+
+        ← BACK TO TIME STONE
+
+        <span>
+            CHAMBER VIII
+        </span>
+
+    </button>
+
+
+    <button
+        class="nav-button"
+        onclick="window.location.href='page10.html'">
+
+        CONTINUE TO THE FINAL CHAMBER →
+
+        <span>
+            CHAMBER X • THE JOURNEY CONTINUES
+        </span>
+
+    </button>
+
+</nav>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div>
+        THE CELESTIAL OASIS
+    </div>
+
+    <div>
+        <strong>SPACE STONE</strong>
+        •
+        CHAMBER IX
+    </div>
+
+</footer>
+
+
+</body>
+</html>

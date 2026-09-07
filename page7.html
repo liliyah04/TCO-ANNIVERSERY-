@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Celestial Oasis — Power Stone</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --black:#020202;
+    --black2:#070506;
+    --panel:#0d090b;
+    --panel2:#140b0e;
+
+    --red:#a90027;
+    --bright:#f0003b;
+    --deep:#47000f;
+
+    --line:#581624;
+    --line2:#321017;
+
+    --white:#f4eaea;
+    --text:#ddd0d0;
+    --muted:#9d8c8f;
+    --dim:#645558;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    color:var(--text);
+    font-family:"Cormorant Garamond",serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 18%,
+            rgba(180,0,38,.17),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 8% 55%,
+            rgba(180,0,38,.06),
+            transparent 23%
+        ),
+        radial-gradient(
+            circle at 92% 72%,
+            rgba(180,0,38,.05),
+            transparent 25%
+        ),
+        #020202;
+}
+
+/* =================================
+   BACKGROUND GRID
+================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+    z-index:0;
+
+    opacity:.12;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.04) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.04) 1px,
+            transparent 1px
+        );
+
+    background-size:65px 65px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+    z-index:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 25%,
+            rgba(0,0,0,.75) 100%
+        );
+}
+
+/* =================================
+   SIDE LINES
+================================= */
+
+.side-line{
+    position:fixed;
+    top:0;
+    bottom:0;
+
+    width:1px;
+
+    z-index:20;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--line),
+            var(--bright),
+            var(--line),
+            transparent
+        );
+}
+
+.side-line.left{
+    left:27px;
+}
+
+.side-line.right{
+    right:27px;
+}
+
+.side-label{
+    position:fixed;
+    top:50%;
+
+    writing-mode:vertical-rl;
+
+    transform:translateY(-50%);
+
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    letter-spacing:5px;
+
+    color:var(--dim);
+
+    z-index:20;
+}
+
+.side-label.left{
+    left:9px;
+}
+
+.side-label.right{
+    right:9px;
+}
+
+/* =================================
+   TOP BAR
+================================= */
+
+.topbar{
+    height:82px;
+
+    padding:0 65px;
+
+    border-bottom:1px solid var(--line);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    position:relative;
+    z-index:10;
+
+    font-family:"DM Mono",monospace;
+    font-size:9px;
+    letter-spacing:3px;
+}
+
+.brand{
+    color:var(--white);
+}
+
+.chapter{
+    color:var(--bright);
+}
+
+/* =================================
+   HERO
+================================= */
+
+.hero{
+    width:min(1200px,88%);
+    min-height:700px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+    z-index:2;
+}
+
+.hero-number{
+    position:absolute;
+
+    right:2%;
+    top:60px;
+
+    font-family:"Cinzel",serif;
+    font-size:190px;
+    font-weight:800;
+
+    color:transparent;
+
+    -webkit-text-stroke:1px rgba(240,0,59,.13);
+
+    pointer-events:none;
+}
+
+.hero-content{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.hero-kicker{
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+    letter-spacing:6px;
+
+    color:var(--bright);
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(60px,9vw,130px);
+
+    line-height:.88;
+
+    letter-spacing:5px;
+
+    color:var(--white);
+
+    text-shadow:
+        0 0 40px rgba(180,0,38,.18);
+}
+
+.hero h1 span{
+    color:var(--bright);
+}
+
+.hero-text{
+    max-width:720px;
+
+    margin-top:35px;
+
+    font-size:20px;
+    line-height:1.5;
+
+    color:var(--muted);
+}
+
+/* =================================
+   POWER CORE
+================================= */
+
+.power-core{
+    width:185px;
+    height:185px;
+
+    margin-top:65px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.core-ring{
+    position:absolute;
+
+    inset:0;
+
+    border:1px solid var(--line);
+
+    transform:rotate(45deg);
+
+    box-shadow:
+        0 0 45px rgba(180,0,38,.08);
+}
+
+.core-ring.second{
+    inset:17px;
+
+    border-color:var(--red);
+
+    box-shadow:
+        inset 0 0 35px rgba(180,0,38,.08);
+}
+
+.core-ring.third{
+    inset:38px;
+
+    border-color:var(--bright);
+}
+
+.core-center{
+    width:75px;
+    height:75px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid var(--bright);
+
+    transform:rotate(45deg);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(240,0,59,.18),
+            transparent 68%
+        );
+
+    box-shadow:
+        0 0 30px rgba(240,0,59,.16);
+}
+
+.core-center span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+    font-size:13px;
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+.core-point{
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    background:var(--bright);
+
+    box-shadow:
+        0 0 20px var(--bright),
+        0 0 45px rgba(240,0,59,.5);
+}
+
+/* =================================
+   INTRODUCTION
+================================= */
+
+.intro{
+    width:min(1100px,88%);
+
+    margin:0 auto 105px;
+
+    padding:9px;
+
+    border:1px solid var(--line);
+
+    position:relative;
+    z-index:2;
+}
+
+.intro-inner{
+    padding:55px 70px;
+
+    border:1px solid var(--line2);
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.08),
+            transparent 48%
+        ),
+        var(--panel);
+}
+
+.intro-label{
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+    letter-spacing:5px;
+
+    color:var(--bright);
+
+    margin-bottom:18px;
+}
+
+.intro h2{
+    font-family:"Cinzel",serif;
+
+    font-size:35px;
+    letter-spacing:2px;
+
+    color:var(--white);
+
+    margin-bottom:18px;
+}
+
+.intro h2 span{
+    color:var(--bright);
+}
+
+.intro p{
+    max-width:850px;
+
+    margin:auto;
+
+    font-size:19px;
+    line-height:1.55;
+
+    color:var(--muted);
+}
+
+/* =================================
+   CORNERS
+================================= */
+
+.corner{
+    position:absolute;
+
+    width:34px;
+    height:34px;
+
+    z-index:5;
+}
+
+.corner::before,
+.corner::after{
+    content:"";
+
+    position:absolute;
+
+    background:var(--bright);
+}
+
+.corner::before{
+    width:100%;
+    height:1px;
+}
+
+.corner::after{
+    width:1px;
+    height:100%;
+}
+
+.corner.tl{
+    top:-1px;
+    left:-1px;
+}
+
+.corner.tr{
+    top:-1px;
+    right:-1px;
+    transform:rotate(90deg);
+}
+
+.corner.br{
+    bottom:-1px;
+    right:-1px;
+    transform:rotate(180deg);
+}
+
+.corner.bl{
+    bottom:-1px;
+    left:-1px;
+    transform:rotate(270deg);
+}
+
+/* =================================
+   CHAMBER TITLE
+================================= */
+
+.chamber{
+    width:min(1250px,88%);
+
+    margin:0 auto 120px;
+
+    position:relative;
+    z-index:2;
+}
+
+.chamber-title{
+    text-align:center;
+
+    margin-bottom:48px;
+}
+
+.chamber-title .label{
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+    letter-spacing:5px;
+
+    color:var(--bright);
+
+    margin-bottom:15px;
+}
+
+.chamber-title h2{
+    font-family:"Cinzel",serif;
+
+    font-size:40px;
+    letter-spacing:3px;
+
+    color:var(--white);
+}
+
+/* =================================
+   POWER GRID
+================================= */
+
+.power-grid{
+    display:grid;
+
+    grid-template-columns:repeat(12,1fr);
+
+    gap:18px;
+}
+
+/* =================================
+   ROLE CARDS
+================================= */
+
+.role-card{
+    position:relative;
+
+    padding:40px 30px;
+
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(180,0,38,.10),
+            transparent 42%
+        ),
+        var(--panel);
+
+    text-align:center;
+
+    overflow:hidden;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.role-card::before{
+    content:"";
+
+    position:absolute;
+    inset:8px;
+
+    border:1px solid rgba(180,0,38,.13);
+
+    pointer-events:none;
+}
+
+.role-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    left:50%;
+    top:45%;
+
+    transform:translate(-50%,-50%);
+
+    background:rgba(180,0,38,.045);
+
+    filter:blur(35px);
+
+    pointer-events:none;
+}
+
+.role-card:hover{
+    transform:translateY(-7px);
+
+    border-color:var(--bright);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.7),
+        0 0 35px rgba(180,0,38,.12);
+}
+
+/* Card sizes */
+
+.writers{
+    grid-column:span 7;
+}
+
+.counselors{
+    grid-column:span 5;
+}
+
+.discord{
+    grid-column:span 5;
+}
+
+.events{
+    grid-column:span 7;
+}
+
+/* =================================
+   ROLE CONTENT
+================================= */
+
+.role-number{
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+    letter-spacing:4px;
+
+    color:var(--bright);
+
+    margin-bottom:25px;
+}
+
+.role-emblem{
+    width:65px;
+    height:65px;
+
+    margin:0 auto 28px;
+
+    border:1px solid var(--red);
+
+    transform:rotate(45deg);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    box-shadow:
+        0 0 25px rgba(180,0,38,.08);
+}
+
+.role-emblem::before{
+    content:"";
+
+    position:absolute;
+    inset:7px;
+
+    border:1px solid var(--line);
+}
+
+.role-emblem span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+
+    font-size:19px;
+
+    color:var(--bright);
+
+    position:relative;
+    z-index:2;
+}
+
+.role-card h3{
+    font-family:"Cinzel",serif;
+
+    font-size:27px;
+    letter-spacing:2px;
+
+    color:var(--white);
+
+    margin-bottom:10px;
+}
+
+.role-sub{
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+    letter-spacing:2px;
+
+    color:var(--dim);
+
+    margin-bottom:28px;
+}
+
+/* =================================
+   MEMBER NAMES
+================================= */
+
+.members{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:9px;
+
+    position:relative;
+    z-index:2;
+}
+
+.member{
+    position:relative;
+
+    padding:12px 17px;
+
+    min-width:95px;
+
+    border:1px solid #611c2b;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.14),
+            rgba(15,5,8,.95)
+        );
+
+    color:#fff;
+
+    font-family:"Cinzel",serif;
+
+    font-size:11px;
+    font-weight:600;
+
+    letter-spacing:1.2px;
+
+    box-shadow:
+        inset 0 0 15px rgba(180,0,38,.04),
+        0 0 12px rgba(180,0,38,.04);
+
+    transition:.3s ease;
+}
+
+.member::before{
+    content:"";
+
+    position:absolute;
+
+    top:-1px;
+    left:18px;
+    right:18px;
+
+    height:1px;
+
+    background:var(--bright);
+
+    box-shadow:0 0 7px var(--bright);
+}
+
+.member::after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-1px;
+
+    left:28%;
+    right:28%;
+
+    height:1px;
+
+    background:var(--red);
+}
+
+.member:hover{
+    transform:translateY(-3px);
+
+    border-color:var(--bright);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(240,0,59,.25),
+            rgba(25,5,9,.96)
+        );
+
+    box-shadow:
+        0 0 22px rgba(240,0,59,.17);
+}
+
+/* =================================
+   COMMAND STRIP
+================================= */
+
+.command-strip{
+    grid-column:span 12;
+
+    min-height:205px;
+
+    border:1px solid var(--red);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(180,0,38,.12),
+            transparent 50%,
+            rgba(180,0,38,.08)
+        ),
+        #080506;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    margin-top:2px;
+}
+
+.command-strip::before{
+    content:"";
+
+    position:absolute;
+
+    width:70%;
+    height:1px;
+
+    top:25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--red),
+            transparent
+        );
+}
+
+.command-strip::after{
+    content:"";
+
+    position:absolute;
+
+    width:70%;
+    height:1px;
+
+    bottom:25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--red),
+            transparent
+        );
+}
+
+.command-label{
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+    letter-spacing:5px;
+
+    color:var(--bright);
+
+    margin-bottom:13px;
+}
+
+.command-strip h3{
+    font-family:"Cinzel",serif;
+
+    font-size:30px;
+    letter-spacing:2px;
+
+    color:var(--white);
+
+    margin-bottom:10px;
+}
+
+.command-strip p{
+    width:min(760px,85%);
+
+    font-size:18px;
+    line-height:1.45;
+
+    color:var(--muted);
+}
+
+/* =================================
+   CLOSING
+================================= */
+
+.closing{
+    width:min(900px,88%);
+
+    margin:0 auto 105px;
+
+    text-align:center;
+
+    position:relative;
+    z-index:2;
+}
+
+.closing-symbol{
+    width:42px;
+    height:42px;
+
+    margin:0 auto 30px;
+
+    border:1px solid var(--red);
+
+    transform:rotate(45deg);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.closing-symbol span{
+    transform:rotate(-45deg);
+
+    font-family:"Cinzel",serif;
+
+    color:var(--bright);
+}
+
+.closing h2{
+    font-family:"Cinzel",serif;
+
+    font-size:35px;
+    letter-spacing:2px;
+
+    color:var(--white);
+
+    margin-bottom:18px;
+}
+
+.closing p{
+    font-size:19px;
+
+    line-height:1.5;
+
+    color:var(--muted);
+}
+
+/* =================================
+   NAVIGATION
+================================= */
+
+.navigation{
+    width:min(1250px,88%);
+
+    margin:0 auto 70px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    position:relative;
+    z-index:2;
+}
+
+.nav-button{
+    flex:1;
+
+    padding:20px 28px;
+
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(180,0,38,.06),
+            transparent
+        ),
+        #080506;
+
+    color:var(--white);
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+.nav-button:hover{
+    border-color:var(--bright);
+
+    background:#100609;
+
+    box-shadow:
+        0 0 30px rgba(180,0,38,.12);
+}
+
+.nav-button span{
+    display:block;
+
+    margin-top:8px;
+
+    color:var(--bright);
+
+    font-size:8px;
+}
+
+/* =================================
+   FOOTER
+================================= */
+
+footer{
+    border-top:1px solid var(--line);
+
+    padding:28px 65px;
+
+    display:flex;
+    justify-content:space-between;
+
+    position:relative;
+    z-index:2;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+    letter-spacing:3px;
+
+    color:var(--dim);
+}
+
+footer strong{
+    color:var(--bright);
+}
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media(max-width:950px){
+
+    .side-line,
+    .side-label{
+        display:none;
+    }
+
+    .topbar{
+        padding:0 30px;
+    }
+
+    .hero-number{
+        font-size:135px;
+    }
+
+    .writers,
+    .counselors,
+    .discord,
+    .events{
+        grid-column:span 6;
+    }
+
+    .command-strip{
+        grid-column:span 12;
+    }
+}
+
+@media(max-width:680px){
+
+    .topbar{
+        height:70px;
+
+        padding:0 22px;
+
+        font-size:8px;
+    }
+
+    .chapter{
+        display:none;
+    }
+
+    .hero{
+        width:90%;
+        min-height:630px;
+    }
+
+    .hero-number{
+        top:60px;
+        right:0;
+
+        font-size:90px;
+    }
+
+    .hero h1{
+        font-size:53px;
+    }
+
+    .hero-text{
+        font-size:18px;
+    }
+
+    .power-core{
+        width:140px;
+        height:140px;
+    }
+
+    .core-center{
+        width:60px;
+        height:60px;
+    }
+
+    .intro{
+        width:90%;
+    }
+
+    .intro-inner{
+        padding:38px 23px;
+    }
+
+    .intro h2{
+        font-size:27px;
+    }
+
+    .intro p{
+        font-size:17px;
+    }
+
+    .chamber{
+        width:90%;
+    }
+
+    .chamber-title h2{
+        font-size:29px;
+    }
+
+    .power-grid{
+        grid-template-columns:1fr;
+    }
+
+    .writers,
+    .counselors,
+    .discord,
+    .events,
+    .command-strip{
+        grid-column:span 1;
+    }
+
+    .role-card{
+        padding:35px 20px;
+    }
+
+    .role-card h3{
+        font-size:24px;
+    }
+
+    .member{
+        min-width:100px;
+        font-size:10px;
+    }
+
+    .navigation{
+        width:90%;
+        flex-direction:column;
+    }
+
+    .nav-button{
+        width:100%;
+    }
+
+    footer{
+        padding:25px;
+
+        flex-direction:column;
+
+        gap:10px;
+    }
+}
+
+@media(max-width:400px){
+
+    .hero h1{
+        font-size:44px;
+    }
+
+    .member{
+        min-width:85px;
+
+        padding:10px 11px;
+
+        font-size:9px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="side-line left"></div>
+<div class="side-line right"></div>
+
+<div class="side-label left">
+    THE CELESTIAL OASIS
+</div>
+
+<div class="side-label right">
+    POWER ARCHIVE
+</div>
+
+
+<!-- =================================
+     TOP BAR
+================================= -->
+
+<header class="topbar">
+
+    <div class="brand">
+        THE CELESTIAL OASIS
+    </div>
+
+    <div class="chapter">
+        CHAMBER VII • THE POWER STONE
+    </div>
+
+</header>
+
+
+<!-- =================================
+     HERO
+================================= -->
+
+<section class="hero">
+
+    <div class="hero-number">
+        07
+    </div>
+
+    <div class="hero-content">
+
+        <div class="hero-kicker">
+            THE COMMAND CHAMBER
+        </div>
+
+        <h1>
+            THE<br>
+            <span>POWER</span><br>
+            STONE
+        </h1>
+
+        <p class="hero-text">
+            Power is not about one person doing everything.
+            It is the people who create, guide, solve, plan,
+            listen and keep things moving when the community
+            needs them.
+        </p>
+
+        <div class="power-core">
+
+            <div class="core-ring"></div>
+            <div class="core-ring second"></div>
+            <div class="core-ring third"></div>
+
+            <div class="core-center">
+                <span>POWER</span>
+            </div>
+
+            <div class="core-point"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     INTRO
+================================= -->
+
+<section class="intro">
+
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner br"></div>
+    <div class="corner bl"></div>
+
+    <div class="intro-inner">
+
+        <div class="intro-label">
+            ARCHIVE RECORD • 07
+        </div>
+
+        <h2>
+            THE PEOPLE WHO KEEP TCO
+            <span>MOVING.</span>
+        </h2>
+
+        <p>
+            Some people create the words. Some make sure everyone
+            feels heard. Some know the server inside out. Some
+            turn an idea into an actual event. Different roles,
+            different strengths, one community. This chamber
+            belongs to the people behind that work.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     POWER CHAMBER
+================================= -->
+
+<section class="chamber">
+
+    <div class="chamber-title">
+
+        <div class="label">
+            POWER STONE • CORE DEPARTMENTS
+        </div>
+
+        <h2>
+            THE PEOPLE BEHIND THE WORK
+        </h2>
+
+    </div>
+
+
+    <div class="power-grid">
+
+
+        <!-- =========================
+             WRITERS
+        ========================== -->
+
+        <article class="role-card writers">
+
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+
+            <div class="role-number">
+                01 / WORDS
+            </div>
+
+            <div class="role-emblem">
+                <span>W</span>
+            </div>
+
+            <h3>
+                WRITERS
+            </h3>
+
+            <div class="role-sub">
+                STORIES • ARTICLES • WORDCRAFT
+            </div>
+
+            <div class="members">
+
+                <div class="member">KIRA</div>
+                <div class="member">VINNIE</div>
+                <div class="member">ARIA</div>
+                <div class="member">DUCKY</div>
+                <div class="member">ANN</div>
+                <div class="member">RYAN</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =========================
+             COUNSELORS
+        ========================== -->
+
+        <article class="role-card counselors">
+
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+
+            <div class="role-number">
+                02 / SUPPORT
+            </div>
+
+            <div class="role-emblem">
+                <span>C</span>
+            </div>
+
+            <h3>
+                COUNSELORS
+            </h3>
+
+            <div class="role-sub">
+                GUIDANCE • LISTENING • SUPPORT
+            </div>
+
+            <div class="members">
+
+                <div class="member">HSU</div>
+                <div class="member">SHREEYA</div>
+                <div class="member">SIYA</div>
+                <div class="member">ANN</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =========================
+             DISCORD EXPERTS
+        ========================== -->
+
+        <article class="role-card discord">
+
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+
+            <div class="role-number">
+                03 / SYSTEMS
+            </div>
+
+            <div class="role-emblem">
+                <span>D</span>
+            </div>
+
+            <h3>
+                DISCORD EXPERTS
+            </h3>
+
+            <div class="role-sub">
+                SERVER • SYSTEMS • TECHNICAL KNOWLEDGE
+            </div>
+
+            <div class="members">
+
+                <div class="member">VANZ</div>
+                <div class="member">EVIE</div>
+                <div class="member">ALIN</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =========================
+             EVENT PLANNERS
+        ========================== -->
+
+        <article class="role-card events">
+
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+
+            <div class="role-number">
+                04 / EVENTS
+            </div>
+
+            <div class="role-emblem">
+                <span>E</span>
+            </div>
+
+            <h3>
+                EVENT PLANNERS
+            </h3>
+
+            <div class="role-sub">
+                PLANNING • ORGANISING • EXPERIENCE
+            </div>
+
+            <div class="members">
+
+                <div class="member">ANN</div>
+                <div class="member">LUNA</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =========================
+             COMMAND STRIP
+        ========================== -->
+
+        <article class="command-strip">
+
+            <div class="command-label">
+                POWER STONE • ARCHIVE NOTE
+            </div>
+
+            <h3>
+                DIFFERENT ROLES. ONE FORCE.
+            </h3>
+
+            <p>
+                The strength of TCO comes from people who bring
+                completely different skills to the same place.
+                Words, support, technical knowledge and events —
+                every part adds something to the community.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     CLOSING
+================================= -->
+
+<section class="closing">
+
+    <div class="closing-symbol">
+        <span>P</span>
+    </div>
+
+    <h2>
+        POWER COMES FROM PEOPLE.
+    </h2>
+
+    <p>
+        Behind the scenes, someone is always writing,
+        helping, fixing, planning or simply making sure
+        things continue to happen. That work may not
+        always be visible, but TCO would not be the same
+        without it.
+    </p>
+
+</section>
+
+
+<!-- =================================
+     NAVIGATION
+================================= -->
+
+<nav class="navigation">
+
+    <button
+        class="nav-button"
+        onclick="window.location.href='page6.html'">
+
+        ← RETURN TO THE PREVIOUS CHAMBER
+
+        <span>
+            CHAMBER VI • THE REALITY STONE
+        </span>
+
+    </button>
+
+
+    <button
+        class="nav-button"
+        onclick="window.location.href='page8.html'">
+
+        ENTER THE NEXT CHAMBER →
+
+        <span>
+            CHAMBER VIII • THE TIME STONE
+        </span>
+
+    </button>
+
+</nav>
+
+
+<!-- =================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    <div>
+        THE CELESTIAL OASIS
+    </div>
+
+    <div>
+        <strong>POWER STONE</strong> • CHAMBER VII
+    </div>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1399 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TCO — The Grand Hall</title><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet"><style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --black:#030303;
+    --black2:#080607;
+    --panel:#11090b;
+    --panel2:#170b0e;
+
+    --red:#a90024;
+    --bright:#e00032;
+    --darkred:#45000e;
+
+    --white:#eee5e4;
+    --soft:#c8baba;
+    --muted:#8d7b7e;
+
+    --border:rgba(190,0,38,.42);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'Cormorant Garamond',serif;
+    overflow:hidden;
+}
+
+.page{
+    width:100vw;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 48%,
+            rgba(155,0,35,.20),
+            transparent 38%
+        ),
+        radial-gradient(
+            ellipse at 50% 100%,
+            rgba(100,0,25,.16),
+            transparent 50%
+        ),
+        linear-gradient(
+            90deg,
+            #020202,
+            #0a0506 50%,
+            #020202
+        );
+}
+
+.arch-grid{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:.35;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 8%,
+            rgba(160,0,30,.13) 8.1%,
+            transparent 8.2%,
+            transparent 91.8%,
+            rgba(160,0,30,.13) 91.9%,
+            transparent 92%
+        ),
+        linear-gradient(
+            0deg,
+            transparent 0%,
+            transparent 12%,
+            rgba(160,0,30,.10) 12.1%,
+            transparent 12.2%,
+            transparent 87.8%,
+            rgba(160,0,30,.10) 87.9%,
+            transparent 88%
+        );
+}
+
+.pillar{
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:72px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #040404,
+            #171214,
+            #070607
+        );
+
+    border-left:1px solid rgba(170,0,30,.20);
+    border-right:1px solid rgba(170,0,30,.20);
+
+    box-shadow:
+        inset 0 0 35px rgba(0,0,0,.9);
+}
+
+.pillar:nth-child(1){
+    left:3%;
+}
+
+.pillar:nth-child(2){
+    left:13%;
+}
+
+.pillar:nth-child(3){
+    right:13%;
+}
+
+.pillar:nth-child(4){
+    right:3%;
+}
+
+.pillar::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    width:1px;
+    height:100%;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(190,0,35,.25),
+            transparent
+        );
+}
+
+.header{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:72px;
+
+    z-index:30;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 38px;
+
+    border-bottom:1px solid rgba(180,0,35,.28);
+    background:rgba(2,2,2,.65);
+
+    backdrop-filter:blur(5px);
+}
+
+.logo{
+    font-family:'Cinzel',serif;
+    font-size:13px;
+    letter-spacing:5px;
+}
+
+.logo span{
+    color:var(--bright);
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:28px;
+
+    font-family:'DM Mono',monospace;
+    font-size:8px;
+    letter-spacing:3px;
+    color:#715b5f;
+}
+
+.side-label{
+    position:absolute;
+    z-index:20;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    writing-mode:vertical-rl;
+
+    font-family:'DM Mono',monospace;
+    font-size:8px;
+    letter-spacing:5px;
+    color:#604d50;
+}
+
+.side-label.left{
+    left:18px;
+}
+
+.side-label.right{
+    right:18px;
+
+    transform:
+        translateY(-50%)
+        rotate(180deg);
+}
+
+.content{
+    position:absolute;
+
+    top:72px;
+    bottom:0;
+
+    left:8%;
+    right:8%;
+
+    display:grid;
+
+    grid-template-columns:260px minmax(430px,1fr) 280px;
+
+    column-gap:22px;
+
+    align-items:center;
+}
+
+.intro{
+    position:relative;
+    padding-right:15px;
+}
+
+.archive{
+    font-family:'DM Mono',monospace;
+    font-size:8px;
+    letter-spacing:4px;
+    color:#80545b;
+    margin-bottom:16px;
+}
+
+.intro h1{
+    font-family:'Cinzel',serif;
+    font-size:48px;
+    line-height:.9;
+    letter-spacing:2px;
+}
+
+.intro h1 span{
+    color:var(--bright);
+}
+
+.intro-line{
+    width:75px;
+    height:2px;
+
+    background:var(--bright);
+
+    margin:20px 0;
+
+    box-shadow:
+        0 0 18px rgba(220,0,40,.5);
+}
+
+.intro p{
+    font-size:17px;
+    line-height:1.45;
+    color:#a69697;
+    max-width:240px;
+}
+
+.intro-quote{
+    margin-top:24px;
+    padding-left:14px;
+
+    border-left:1px solid var(--bright);
+
+    font-size:19px;
+    line-height:1.25;
+    color:#d3c5c5;
+}
+
+.intro-quote span{
+    color:#96767b;
+}
+
+.center{
+    height:650px;
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.grand-arch{
+    position:absolute;
+
+    width:455px;
+    height:610px;
+
+    border:3px solid rgba(160,0,32,.40);
+    border-bottom:none;
+
+    border-radius:
+        50% 50% 0 0 / 36% 36% 0 0;
+
+    box-shadow:
+        0 0 55px rgba(140,0,30,.09);
+}
+
+.grand-arch::before{
+    content:"";
+
+    position:absolute;
+    inset:15px;
+
+    border:1px solid rgba(200,0,40,.28);
+    border-bottom:none;
+
+    border-radius:
+        50% 50% 0 0 / 36% 36% 0 0;
+}
+
+.arch-glow{
+    position:absolute;
+
+    width:320px;
+    height:500px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(190,0,40,.27),
+            transparent 67%
+        );
+
+    filter:blur(20px);
+
+    animation:glow 4s ease-in-out infinite;
+}
+
+@keyframes glow{
+    0%,100%{opacity:.55;}
+    50%{opacity:1;}
+}
+
+.emblem{
+    position:absolute;
+    top:55px;
+
+    width:82px;
+    height:82px;
+
+    border:1px solid rgba(210,0,42,.65);
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-family:'Cinzel',serif;
+    font-size:14px;
+    letter-spacing:3px;
+
+    color:#d5aeb3;
+    background:#090405;
+
+    box-shadow:
+        0 0 25px rgba(170,0,35,.18);
+}
+
+.emblem::before{
+    content:"";
+
+    position:absolute;
+    inset:8px;
+
+    border:1px solid rgba(210,0,42,.35);
+    border-radius:50%;
+}
+
+.emblem::after{
+    content:"✦";
+
+    position:absolute;
+
+    font-size:11px;
+    color:var(--bright);
+
+    top:3px;
+}
+
+.center-text{
+    position:relative;
+    z-index:5;
+
+    text-align:center;
+
+    width:300px;
+    margin-top:35px;
+}
+
+.center-text .mini{
+    font-family:'DM Mono',monospace;
+
+    font-size:8px;
+    letter-spacing:5px;
+    color:#805e63;
+}
+
+.center-text h2{
+    font-family:'Cinzel',serif;
+
+    font-size:30px;
+    letter-spacing:3px;
+
+    margin-top:14px;
+}
+
+.center-text h2 span{
+    color:var(--bright);
+}
+
+.center-text p{
+    font-size:16px;
+    line-height:1.5;
+
+    color:#a59596;
+
+    margin-top:13px;
+}
+
+.ornament{
+    position:absolute;
+
+    width:130px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(210,0,40,.5),
+            transparent
+        );
+}
+
+.ornament.one{
+    top:31%;
+    left:0;
+}
+
+.ornament.two{
+    top:31%;
+    right:0;
+}
+
+.chambers{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.chambers-label{
+    font-family:'DM Mono',monospace;
+
+    font-size:8px;
+    letter-spacing:4px;
+
+    color:#74575b;
+
+    margin-bottom:4px;
+}
+
+.chamber{
+    position:relative;
+
+    width:100%;
+    min-height:76px;
+
+    padding:14px 15px;
+
+    text-align:left;
+
+    cursor:pointer;
+
+    color:var(--white);
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(75,0,15,.42),
+            rgba(13,7,8,.85)
+        );
+
+    border:1px solid rgba(170,0,35,.30);
+
+    transition:.35s ease;
+
+    overflow:hidden;
+}
+
+.chamber::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:3px;
+
+    background:var(--bright);
+
+    transform:scaleY(.25);
+    transform-origin:center;
+
+    transition:.35s;
+}
+
+.chamber:hover::before{
+    transform:scaleY(1);
+}
+
+.chamber:hover{
+    transform:translateX(-7px);
+
+    border-color:rgba(230,0,45,.7);
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(110,0,25,.45),
+            rgba(20,7,9,.9)
+        );
+
+    box-shadow:
+        -12px 10px 35px rgba(130,0,30,.16);
+}
+
+.chamber-number{
+    position:absolute;
+
+    right:13px;
+    top:10px;
+
+    font-family:'DM Mono',monospace;
+
+    font-size:8px;
+    color:#694b50;
+}
+
+.chamber-title{
+    font-family:'Cinzel',serif;
+
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.chamber-sub{
+    margin-top:5px;
+
+    font-size:13px;
+    color:#89797b;
+}
+
+.footer{
+    position:absolute;
+
+    bottom:22px;
+
+    left:8%;
+    right:8%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    z-index:30;
+
+    font-family:'DM Mono',monospace;
+
+    font-size:8px;
+    letter-spacing:3px;
+
+    color:#604b4e;
+}
+
+.footer-line{
+    height:1px;
+
+    flex:1;
+
+    margin:0 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(170,0,35,.35),
+            transparent
+        );
+}
+
+.next{
+    cursor:pointer;
+
+    padding:10px 17px;
+
+    border:1px solid rgba(180,0,35,.38);
+
+    transition:.3s;
+
+    color:#a98f93;
+}
+
+.next:hover{
+    color:white;
+
+    background:#580013;
+
+    border-color:#df0034;
+
+    box-shadow:
+        0 0 25px rgba(220,0,40,.15);
+}
+
+/* =========================================================
+   ORNATE POPUP
+========================================================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,.84);
+
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.35s;
+}
+
+.modal.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-frame{
+    position:relative;
+
+    width:min(650px,88vw);
+
+    padding:9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #270009,
+            #080405 30%,
+            #18070a 70%,
+            #35000c
+        );
+
+    border:1px solid rgba(220,0,45,.65);
+
+    box-shadow:
+        0 0 80px rgba(150,0,35,.28),
+        inset 0 0 35px rgba(150,0,35,.10);
+
+    transform:
+        translateY(30px)
+        scale(.94);
+
+    transition:
+        .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.modal.active .modal-frame{
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.modal-inner{
+    position:relative;
+
+    padding:45px 48px;
+
+    min-height:330px;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(90,0,20,.22),
+            transparent 65%
+        ),
+        #080607;
+
+    border:1px solid rgba(180,0,35,.32);
+}
+
+.corner-decoration{
+    position:absolute;
+
+    width:35px;
+    height:35px;
+
+    border-color:#a90025;
+}
+
+.corner-decoration.tl{
+    top:10px;
+    left:10px;
+
+    border-top:1px solid;
+    border-left:1px solid;
+}
+
+.corner-decoration.tr{
+    top:10px;
+    right:10px;
+
+    border-top:1px solid;
+    border-right:1px solid;
+}
+
+.corner-decoration.bl{
+    bottom:10px;
+    left:10px;
+
+    border-bottom:1px solid;
+    border-left:1px solid;
+}
+
+.corner-decoration.br{
+    bottom:10px;
+    right:10px;
+
+    border-bottom:1px solid;
+    border-right:1px solid;
+}
+
+.modal-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    font-family:'DM Mono',monospace;
+
+    font-size:8px;
+    letter-spacing:4px;
+
+    color:#806166;
+}
+
+.modal-top::before,
+.modal-top::after{
+    content:"";
+
+    height:1px;
+
+    flex:1;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(180,0,35,.5)
+        );
+}
+
+.modal-top::after{
+    background:
+        linear-gradient(
+            90deg,
+            rgba(180,0,35,.5),
+            transparent
+        );
+}
+
+.modal h3{
+    text-align:center;
+
+    margin-top:23px;
+
+    font-family:'Cinzel',serif;
+
+    font-size:30px;
+    letter-spacing:4px;
+}
+
+.modal h3 span{
+    color:var(--bright);
+}
+
+.modal-divider{
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:10px;
+
+    margin:18px 0;
+}
+
+.modal-divider span{
+    display:block;
+
+    width:35px;
+    height:1px;
+
+    background:rgba(200,0,40,.5);
+}
+
+.modal-divider b{
+    color:var(--bright);
+
+    font-size:13px;
+}
+
+.modal-text{
+    text-align:center;
+
+    max-width:490px;
+
+    margin:auto;
+
+    font-size:18px;
+    line-height:1.6;
+
+    color:#b9aaaa;
+}
+
+.modal-seal{
+    margin:22px auto 0;
+
+    width:48px;
+    height:48px;
+
+    border:1px solid rgba(190,0,35,.5);
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-family:'DM Mono',monospace;
+
+    font-size:8px;
+
+    color:#a97c83;
+}
+
+.close{
+    position:absolute;
+
+    top:18px;
+    right:20px;
+
+    width:27px;
+    height:27px;
+
+    border:1px solid rgba(180,0,35,.4);
+
+    background:#100508;
+
+    color:#ad7c83;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.close:hover{
+    background:#76001b;
+
+    color:white;
+
+    border-color:#ed0035;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+    body{
+        overflow:auto;
+    }
+
+    .page{
+        min-height:100vh;
+        height:auto;
+    }
+
+    .content{
+        position:relative;
+
+        top:auto;
+        bottom:auto;
+
+        left:auto;
+        right:auto;
+
+        width:90%;
+
+        margin:auto;
+
+        padding:110px 0 100px;
+
+        grid-template-columns:1fr;
+
+        gap:35px;
+    }
+
+    .intro{
+        text-align:center;
+    }
+
+    .intro p{
+        max-width:500px;
+        margin:auto;
+    }
+
+    .intro-quote{
+        max-width:400px;
+        margin:25px auto 0;
+
+        text-align:left;
+    }
+
+    .center{
+        height:550px;
+    }
+
+    .right-panel{
+        width:min(500px,100%);
+        margin:auto;
+    }
+
+    .footer{
+        position:relative;
+
+        left:auto;
+        right:auto;
+
+        width:90%;
+
+        margin:0 auto 20px;
+    }
+
+    .pillar{
+        opacity:.25;
+    }
+
+    .side-label{
+        display:none;
+    }
+}
+
+@media(max-width:650px){
+
+    .header{
+        padding:0 20px;
+    }
+
+    .header-right{
+        gap:10px;
+    }
+
+    .header-right span:first-child{
+        display:none;
+    }
+
+    .content{
+        width:92%;
+    }
+
+    .intro h1{
+        font-size:42px;
+    }
+
+    .center{
+        height:500px;
+    }
+
+    .grand-arch{
+        width:320px;
+        height:470px;
+    }
+
+    .center-text{
+        width:250px;
+    }
+
+    .center-text h2{
+        font-size:24px;
+    }
+
+    .chamber{
+        min-height:72px;
+    }
+
+    .modal-frame{
+        width:92vw;
+    }
+
+    .modal-inner{
+        padding:38px 25px;
+    }
+
+    .modal h3{
+        font-size:23px;
+        letter-spacing:2px;
+    }
+
+    .modal-text{
+        font-size:17px;
+    }
+
+    .footer{
+        width:92%;
+        flex-direction:column;
+        gap:14px;
+        text-align:center;
+    }
+
+    .footer-line{
+        width:100%;
+        flex:none;
+        margin:0;
+    }
+
+    .next{
+        width:100%;
+    }
+}
+
+@media(max-width:400px){
+
+    .intro h1{
+        font-size:37px;
+    }
+
+    .grand-arch{
+        width:285px;
+        height:440px;
+    }
+
+    .center-text{
+        width:220px;
+    }
+
+    .center-text h2{
+        font-size:21px;
+    }
+}
+
+</style></head><body><div class="page"><div class="arch-grid"></div>
+
+<div class="pillar"></div>
+<div class="pillar"></div>
+<div class="pillar"></div>
+<div class="pillar"></div>
+
+<header class="header">
+
+    <div class="logo">
+        T<span>C</span>O
+    </div>
+
+    <div class="header-right">
+
+        <span>THE CELESTIAL OASIS</span>
+
+        <span>02 / 10</span>
+
+    </div>
+
+</header>
+
+<div class="side-label left">
+    THE PEOPLE MAKE THE PLACE • THE PEOPLE MAKE THE PLACE
+</div>
+
+<div class="side-label right">
+    ENTER THE GRAND HALL • ENTER THE GRAND HALL
+</div>
+
+<main class="content">
+
+    <section class="intro">
+
+        <div class="archive">
+            CHAMBER 002 &nbsp; / &nbsp; TCO ARCHIVES
+        </div>
+
+        <h1>
+            THE<br>
+            GRAND<br>
+            <span>HALL</span>
+        </h1>
+
+        <div class="intro-line"></div>
+
+        <p>
+            You made it inside.
+            This is where the doors stop
+            being doors and start becoming
+            a home.
+        </p>
+
+        <div class="intro-quote">
+            “The walls may hold the place together,
+            <span>but the people make it worth staying.</span>”
+        </div>
+
+    </section>
+
+    <section class="center">
+
+        <div class="grand-arch"></div>
+
+        <div class="arch-glow"></div>
+
+        <div class="ornament one"></div>
+        <div class="ornament two"></div>
+
+        <div class="emblem">
+            TCO
+        </div>
+
+        <div class="center-text">
+
+            <div class="mini">
+                STEP FURTHER INSIDE
+            </div>
+
+            <h2>
+                THIS IS <span>OUR HOME</span>
+            </h2>
+
+            <p>
+                What began as a place to gather
+                became a place to belong.
+                Different people, different stories,
+                one little corner of the internet
+                that somehow became ours.
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="chambers">
+
+        <div class="chambers-label">
+            UNLOCK THE CHAMBERS
+        </div>
+
+        <button
+            class="chamber"
+            onclick="openModal('people')">
+
+            <div class="chamber-number">
+                01
+            </div>
+
+            <div class="chamber-title">
+                THE PEOPLE
+            </div>
+
+            <div class="chamber-sub">
+                The souls inside the Oasis.
+            </div>
+
+        </button>
+
+        <button
+            class="chamber"
+            onclick="openModal('creativity')">
+
+            <div class="chamber-number">
+                02
+            </div>
+
+            <div class="chamber-title">
+                CREATIVITY
+            </div>
+
+            <div class="chamber-sub">
+                The ideas that give TCO its character.
+            </div>
+
+        </button>
+
+        <button
+            class="chamber"
+            onclick="openModal('memories')">
+
+            <div class="chamber-number">
+                03
+            </div>
+
+            <div class="chamber-title">
+                MEMORIES
+            </div>
+
+            <div class="chamber-sub">
+                The moments we keep coming back to.
+            </div>
+
+        </button>
+
+        <button
+            class="chamber"
+            onclick="openModal('family')">
+
+            <div class="chamber-number">
+                04
+            </div>
+
+            <div class="chamber-title">
+                FAMILY
+            </div>
+
+            <div class="chamber-sub">
+                The reason the Oasis feels like home.
+            </div>
+
+        </button>
+
+    </section>
+
+</main>
+
+<!-- POPUP -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-frame">
+
+        <div class="modal-inner">
+
+            <div class="corner-decoration tl"></div>
+            <div class="corner-decoration tr"></div>
+            <div class="corner-decoration bl"></div>
+            <div class="corner-decoration br"></div>
+
+            <button class="close" onclick="closeModal()">×</button>
+
+            <div class="modal-top">
+                ARCHIVE OPENED • TCO
+            </div>
+
+            <h3 id="modalTitle">
+                THE <span>PEOPLE</span>
+            </h3>
+
+            <div class="modal-divider">
+
+                <span></span>
+                <b>✦</b>
+                <span></span>
+
+            </div>
+
+            <p class="modal-text" id="modalText">
+                The people inside TCO are what turn a server
+                into a community. Every person adds something
+                that makes the Oasis feel alive.
+        </p>
+
+            <div class="modal-seal">
+                TCO
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER NAVIGATION -->
+
+<div class="footer">
+
+    <div>
+        TCO • GRAND HALL
+    </div>
+
+    <div class="footer-line"></div>
+
+    <!-- ONE CLICK → PAGE 3 -->
+
+    <div
+        class="next"
+        onclick="window.location.href='page3.html';">
+
+        ENTER THE EVENT ARCHIVES →
+        
+    </div>
+
+</div>
+
+</div>
+
+<script>
+
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalText = document.getElementById("modalText");
+
+const modalData = {
+
+    people:{
+        title:'THE <span>PEOPLE</span>',
+        text:'The people inside TCO are what turn a server into a community. Every person adds something that makes the Oasis feel alive.'
+    },
+
+    creativity:{
+        title:'<span>CREATIVITY</span>',
+        text:'From designs and words to ideas, events and little details, creativity has always been one of the things that gives TCO its own identity.'
+    },
+
+    memories:{
+        title:'THE <span>MEMORIES</span>',
+        text:'Events, conversations, celebrations and completely random moments become memories. They are the little pieces of TCO that stay with us.'
+    },
+
+    family:{
+        title:'THE <span>FAMILY</span>',
+        text:'TCO became more than a place to visit. It became somewhere people could return to, meet others, create things, laugh, disappear for a while and still find their way back.'
+    }
+
+};
+
+function openModal(type){
+
+    const data = modalData[type];
+
+    if(!data) return;
+
+    modalTitle.innerHTML = data.title;
+    modalText.textContent = data.text;
+
+    modal.classList.add("active");
+
+}
+
+function closeModal(){
+
+    modal.classList.remove("active");
+
+}
+
+modal.addEventListener("click",function(event){
+
+    if(event.target === modal){
+        closeModal();
+    }
+
+});
+
+document.addEventListener("keydown",function(event){
+
+    if(event.key === "Escape"){
+        closeModal();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
