@@ -1,0 +1,1661 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>The Celestial Oasis — Event Archives</title><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --black:#020202;
+    --black2:#080506;
+    --panel:#0d090b;
+    --panel2:#12090d;
+
+    --red:#a90027;
+    --bright:#ed0038;
+    --deep:#43000e;
+
+    --line:#551522;
+    --line2:#321017;
+
+    --white:#f4e9ea;
+    --text:#ddd0d1;
+    --muted:#9e8e91;
+    --dim:#65565a;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(170,0,38,.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 20% 60%,
+            rgba(170,0,38,.06),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(170,0,38,.06),
+            transparent 25%
+        ),
+        var(--black);
+
+    color:var(--text);
+
+    font-family:"Cormorant Garamond",serif;
+}
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+    z-index:0;
+
+    opacity:.09;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        );
+
+    background-size:65px 65px;
+}
+
+body::after{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+    z-index:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 20%,
+            rgba(0,0,0,.82) 100%
+        );
+}
+
+/* =========================================================
+   SIDE ARCHIVE LINES
+========================================================= */
+
+.side-line{
+    position:fixed;
+
+    top:0;
+    bottom:0;
+
+    width:1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--line),
+            var(--bright),
+            var(--line),
+            transparent
+        );
+
+    z-index:20;
+}
+
+.side-line.left{
+    left:28px;
+}
+
+.side-line.right{
+    right:28px;
+}
+
+.side-label{
+    position:fixed;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    writing-mode:vertical-rl;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:5px;
+
+    color:var(--dim);
+
+    z-index:20;
+}
+
+.side-label.left{
+    left:10px;
+}
+
+.side-label.right{
+    right:10px;
+}
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar{
+    height:82px;
+
+    padding:0 65px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--line);
+
+    position:relative;
+    z-index:10;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+}
+
+.brand{
+    color:var(--white);
+}
+
+.chapter{
+    color:var(--bright);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    width:min(1250px,90%);
+
+    min-height:760px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    z-index:2;
+}
+
+.hero-number{
+    position:absolute;
+
+    top:40px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(180px,28vw,390px);
+
+    font-weight:800;
+
+    line-height:1;
+
+    color:transparent;
+
+    -webkit-text-stroke:1px rgba(240,0,59,.09);
+
+    pointer-events:none;
+}
+
+.hero-content{
+    width:100%;
+
+    position:relative;
+    z-index:3;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.kicker{
+    margin-bottom:22px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+
+    letter-spacing:6px;
+
+    color:var(--bright);
+}
+
+.hero h1{
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(48px,8vw,105px);
+
+    font-weight:800;
+
+    line-height:.95;
+
+    letter-spacing:4px;
+
+    color:var(--white);
+}
+
+.hero h1 span{
+    display:block;
+
+    margin-top:12px;
+
+    color:var(--bright);
+}
+
+.hero-description{
+    width:min(690px,90%);
+
+    margin-top:38px;
+
+    font-size:20px;
+
+    line-height:1.55;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   ARCHIVE SEAL
+========================================================= */
+
+.archive-seal{
+    width:150px;
+    height:150px;
+
+    margin-top:55px;
+
+    border:1px solid var(--line);
+
+    outline:1px solid rgba(169,0,39,.12);
+
+    outline-offset:9px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+.archive-seal::before{
+    content:"";
+
+    position:absolute;
+
+    inset:13px;
+
+    border:1px dashed rgba(240,0,59,.4);
+
+    border-radius:50%;
+}
+
+.archive-seal::after{
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+    height:9px;
+
+    border:1px solid var(--bright);
+
+    transform:rotate(45deg);
+
+    background:var(--black);
+
+    top:-5px;
+}
+
+.archive-seal span{
+    font-family:"Cinzel",serif;
+
+    font-size:34px;
+
+    letter-spacing:4px;
+
+    color:var(--white);
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.divider{
+    width:min(900px,82%);
+
+    margin:0 auto 105px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    position:relative;
+    z-index:2;
+}
+
+.divider-line{
+    flex:1;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--line)
+        );
+}
+
+.divider-line.right{
+    background:
+        linear-gradient(
+            90deg,
+            var(--line),
+            transparent
+        );
+}
+
+.divider-mark{
+    width:10px;
+    height:10px;
+
+    border:1px solid var(--bright);
+
+    transform:rotate(45deg);
+
+    background:var(--black);
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    width:min(1100px,90%);
+
+    margin:0 auto 120px;
+
+    padding:10px;
+
+    border:1px solid var(--line);
+
+    position:relative;
+
+    z-index:2;
+
+    background:#050304;
+}
+
+.intro-inner{
+    padding:55px 70px;
+
+    border:1px solid var(--line2);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(169,0,39,.1),
+            transparent 60%
+        ),
+        var(--panel);
+
+    text-align:center;
+}
+
+.intro-label{
+    margin-bottom:17px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:var(--bright);
+}
+
+.intro h2{
+    margin-bottom:18px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:36px;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+.intro p{
+    width:min(790px,100%);
+
+    margin:auto;
+
+    font-size:19px;
+
+    line-height:1.6;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline{
+    width:min(1200px,90%);
+
+    margin:0 auto;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.timeline-heading{
+    text-align:center;
+
+    margin-bottom:70px;
+}
+
+.timeline-heading .small{
+    margin-bottom:14px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:var(--bright);
+}
+
+.timeline-heading h2{
+    font-family:"Cinzel",serif;
+
+    font-size:44px;
+
+    letter-spacing:3px;
+
+    color:var(--white);
+}
+
+/* =========================================================
+   EVENT
+========================================================= */
+
+.event{
+    display:grid;
+
+    grid-template-columns:
+        160px minmax(0,1fr);
+
+    gap:35px;
+
+    position:relative;
+
+    margin-bottom:80px;
+}
+
+.event:last-child{
+    margin-bottom:120px;
+}
+
+.event-date{
+    padding-top:15px;
+
+    text-align:right;
+
+    position:relative;
+}
+
+.event-date .year{
+    display:block;
+
+    font-family:"Cinzel",serif;
+
+    font-size:35px;
+
+    color:var(--white);
+}
+
+.event-date .day{
+    display:block;
+
+    margin-top:5px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    line-height:1.6;
+
+    letter-spacing:2px;
+
+    color:var(--bright);
+}
+
+.event-date::after{
+    content:"";
+
+    position:absolute;
+
+    top:25px;
+    right:-18px;
+
+    width:9px;
+    height:9px;
+
+    border:1px solid var(--bright);
+
+    transform:rotate(45deg);
+
+    background:var(--black);
+
+    z-index:3;
+}
+
+/* =========================================================
+   EVENT CARD
+========================================================= */
+
+.event-card{
+    padding:10px;
+
+    border:1px solid var(--line);
+
+    background:#050304;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.event-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border:1px solid rgba(169,0,39,.08);
+
+    border-radius:50%;
+
+    top:-170px;
+    right:-100px;
+
+    pointer-events:none;
+}
+
+.event-inner{
+    padding:42px;
+
+    border:1px solid var(--line2);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(169,0,39,.09),
+            transparent 45%
+        ),
+        var(--panel);
+
+    position:relative;
+}
+
+/* =========================================================
+   EVENT HEADER
+========================================================= */
+
+.event-tag{
+    display:inline-block;
+
+    margin-bottom:17px;
+
+    padding:7px 12px;
+
+    border:1px solid var(--line);
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:var(--bright);
+}
+
+.event-title{
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(31px,4vw,55px);
+
+    line-height:1.05;
+
+    letter-spacing:2px;
+
+    color:var(--white);
+}
+
+.event-title span{
+    color:var(--bright);
+}
+
+.event-subtitle{
+    margin-top:13px;
+
+    font-size:20px;
+
+    color:#b5a5a8;
+}
+
+/* =========================================================
+   EVENT DESCRIPTION
+========================================================= */
+
+.event-description{
+    width:min(800px,100%);
+
+    margin-top:28px;
+
+    font-size:19px;
+
+    line-height:1.6;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   EVENT FEATURES
+========================================================= */
+
+.features{
+    margin-top:32px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:10px;
+}
+
+.feature{
+    min-height:75px;
+
+    padding:16px;
+
+    border:1px solid var(--line2);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    background:#090506;
+
+    font-family:"Cinzel",serif;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    color:#d8cacc;
+
+    transition:.3s ease;
+}
+
+.feature:hover{
+    border-color:var(--red);
+
+    background:#100609;
+
+    transform:translateY(-3px);
+}
+
+/* =========================================================
+   ORIGINAL ANNOUNCEMENT
+========================================================= */
+
+.announcement{
+    margin-top:35px;
+
+    padding:28px;
+
+    border-left:2px solid var(--bright);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(169,0,39,.1),
+            transparent
+        );
+}
+
+.announcement-label{
+    margin-bottom:13px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:4px;
+
+    color:var(--bright);
+}
+
+.announcement p{
+    font-size:19px;
+
+    line-height:1.6;
+
+    color:#b9aaac;
+
+    font-style:italic;
+}
+
+.announcement strong{
+    color:var(--white);
+
+    font-style:normal;
+}
+
+/* =========================================================
+   EVENT FOOTER
+========================================================= */
+
+.event-footer{
+    margin-top:30px;
+
+    padding-top:20px;
+
+    border-top:1px solid var(--line2);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    color:var(--dim);
+}
+
+.event-footer strong{
+    color:var(--bright);
+}
+
+/* =========================================================
+   BETWEEN EVENTS
+========================================================= */
+
+.archive-marker{
+    width:55px;
+    height:55px;
+
+    margin:-20px auto 80px;
+
+    border:1px solid var(--line);
+
+    transform:rotate(45deg);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#070405;
+}
+
+.archive-marker span{
+    transform:rotate(-45deg);
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    color:var(--bright);
+
+    letter-spacing:2px;
+}
+
+/* =========================================================
+   CLOSING STATEMENT
+========================================================= */
+
+.closing{
+    width:min(1050px,90%);
+
+    margin:0 auto 105px;
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.closing-line{
+    width:1px;
+
+    height:75px;
+
+    margin:0 auto 38px;
+
+    background:
+        linear-gradient(
+            transparent,
+            var(--bright)
+        );
+}
+
+.closing .small{
+    margin-bottom:17px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:5px;
+
+    color:var(--bright);
+}
+
+.closing h2{
+    margin-bottom:20px;
+
+    font-family:"Cinzel",serif;
+
+    font-size:clamp(32px,5vw,57px);
+
+    letter-spacing:3px;
+
+    color:var(--white);
+}
+
+.closing h2 span{
+    color:var(--bright);
+}
+
+.closing p{
+    width:min(760px,100%);
+
+    margin:auto;
+
+    font-size:20px;
+
+    line-height:1.6;
+
+    color:var(--muted);
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation{
+    width:min(1200px,90%);
+
+    margin:0 auto 80px;
+
+    display:flex;
+
+    gap:18px;
+
+    position:relative;
+
+    z-index:3;
+}
+
+.nav-button{
+    flex:1;
+
+    padding:21px 28px;
+
+    border:1px solid var(--line);
+
+    background:#080506;
+
+    color:var(--white);
+
+    text-decoration:none;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    transition:.3s ease;
+
+    text-align:center;
+}
+
+.nav-button:hover{
+    border-color:var(--bright);
+
+    background:#100609;
+
+    box-shadow:
+        0 0 30px rgba(240,0,59,.12);
+}
+
+.nav-button span{
+    display:block;
+
+    margin-top:8px;
+
+    font-size:8px;
+
+    color:var(--bright);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    padding:30px 65px;
+
+    border-top:1px solid var(--line);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    position:relative;
+
+    z-index:3;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    letter-spacing:3px;
+
+    color:var(--dim);
+}
+
+footer strong{
+    color:var(--bright);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:950px){
+
+    .side-line,
+    .side-label{
+        display:none;
+    }
+
+    .topbar{
+        padding:0 30px;
+    }
+
+    .event{
+        grid-template-columns:
+            110px minmax(0,1fr);
+
+        gap:25px;
+    }
+
+    .event-date .year{
+        font-size:28px;
+    }
+
+    .features{
+        grid-template-columns:
+            1fr 1fr;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:650px){
+
+    .topbar{
+        height:70px;
+
+        padding:0 22px;
+
+        font-size:8px;
+    }
+
+    .chapter{
+        display:none;
+    }
+
+    .hero{
+        width:92%;
+
+        min-height:700px;
+    }
+
+    .hero-number{
+        font-size:170px;
+
+        top:70px;
+    }
+
+    .hero h1{
+        font-size:48px;
+
+        letter-spacing:2px;
+    }
+
+    .hero-description{
+        font-size:18px;
+    }
+
+    .archive-seal{
+        width:130px;
+        height:130px;
+    }
+
+    .archive-seal span{
+        font-size:28px;
+    }
+
+    .intro{
+        width:92%;
+    }
+
+    .intro-inner{
+        padding:42px 25px;
+    }
+
+    .intro h2{
+        font-size:28px;
+    }
+
+    .intro p{
+        font-size:17px;
+    }
+
+    .timeline{
+        width:92%;
+    }
+
+    .timeline-heading h2{
+        font-size:34px;
+    }
+
+    .event{
+        display:block;
+
+        margin-bottom:65px;
+    }
+
+    .event-date{
+        padding:0 0 22px;
+
+        text-align:left;
+
+        display:flex;
+
+        align-items:baseline;
+
+        gap:12px;
+    }
+
+    .event-date .year{
+        font-size:30px;
+    }
+
+    .event-date .day{
+        margin:0;
+    }
+
+    .event-date::after{
+        display:none;
+    }
+
+    .event-inner{
+        padding:28px 22px 30px;
+    }
+
+    .event-title{
+        font-size:35px;
+    }
+
+    .event-subtitle{
+        font-size:18px;
+    }
+
+    .event-description{
+        font-size:18px;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .announcement{
+        padding:22px 18px;
+    }
+
+    .announcement p{
+        font-size:17px;
+    }
+
+    .event-footer{
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        line-height:1.5;
+    }
+
+    .navigation{
+        width:92%;
+
+        flex-direction:column;
+    }
+
+    footer{
+        padding:25px 20px;
+
+        flex-direction:column;
+
+        gap:10px;
+
+        text-align:center;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:400px){
+
+    .hero h1{
+        font-size:41px;
+    }
+
+    .hero-number{
+        font-size:145px;
+    }
+
+    .event-title{
+        font-size:31px;
+    }
+}
+
+</style></head><body><div class="side-line left"></div>
+<div class="side-line right"></div><div class="side-label left">
+    EVENT ARCHIVES
+</div><div class="side-label right">
+    THE CELESTIAL OASIS
+</div><!-- =====================================================
+     TOP BAR
+===================================================== --><header class="topbar"><div class="brand">
+    THE CELESTIAL OASIS
+</div>
+
+<div class="chapter">
+    CHAMBER III • EVENT ARCHIVES
+</div>
+
+</header><main><!-- =====================================================
+     HERO
+===================================================== --><section class="hero"><div class="hero-number">
+    III
+</div>
+
+<div class="hero-content">
+
+    <div class="kicker">
+        CHAMBER III • THE ARCHIVES
+    </div>
+
+    <h1>
+        THE EVENTS
+        <span>WE REMEMBER</span>
+    </h1>
+
+    <p class="hero-description">
+        A community is remembered not only by the years it has existed,
+        but by the moments it created. These are a few of the celebrations
+        that brought TCO together, filled the server with energy and gave
+        everyone something to look forward to.
+    </p>
+
+    <div class="archive-seal">
+        <span>III</span>
+    </div>
+
+</div>
+
+</section>
+  
+  <!-- =====================================================
+     DIVIDER
+===================================================== -->
+
+<div class="divider">
+
+<div class="divider-line"></div>
+
+<div class="divider-mark"></div>
+
+<div class="divider-line right"></div>
+
+</div>
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="intro">
+
+<div class="intro-inner">
+
+    <div class="intro-label">
+        FROM THE EVENT ARCHIVE
+    </div>
+
+    <h2>
+        MOMENTS MADE TOGETHER
+    </h2>
+
+    <p>
+        Over the years, TCO has turned ordinary days into reasons to
+        celebrate. From games and music to challenges, surprises and
+        simple chaos in chat, every event became another memory shared
+        by the people who were there.
+    </p>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+     EVENT TIMELINE
+===================================================== -->
+
+<section class="timeline">
+
+<div class="timeline-heading">
+
+    <div class="small">
+        SELECTED ARCHIVES
+    </div>
+
+    <h2>
+        TWO SUMMERS. TWO STORIES.
+    </h2>
+
+</div>
+
+<!-- =====================================================
+     EVENT 01 — 2025
+===================================================== -->
+
+<article class="event">
+
+<div class="event-date">
+
+    <span class="year">
+        2025
+    </span>
+
+    <span class="day">
+        11 JULY<br>
+        20 JULY
+    </span>
+
+</div>
+
+
+<div class="event-card">
+
+    <div class="event-inner">
+
+        <div class="event-tag">
+            SUMMER EVENT • 10 DAYS
+        </div>
+
+        <h3 class="event-title">
+            SIZZLE
+            <span>IN JULY</span>
+        </h3>
+
+        <div class="event-subtitle">
+            The summer arrived. TCO turned up the heat.
+        </div>
+
+        <p class="event-description">
+            In July 2025, The Celestial Haven became the place to be.
+            Sizzle in July was announced as a ten-day summer celebration,
+            bringing games, music, giveaways, team challenges, gift swaps
+            and a few surprises along the way.
+        </p>
+
+
+        <div class="features">
+
+            <div class="feature">
+                CRAZY-FUN<br>GAMES
+            </div>
+
+            <div class="feature">
+                MUSIC<br>SESSIONS
+            </div>
+
+            <div class="feature">
+                REGULAR<br>GIVEAWAYS
+            </div>
+
+            <div class="feature">
+                TEAM<br>SHOWDOWNS
+            </div>
+
+            <div class="feature">
+                GIFT<br>SWAPS
+            </div>
+
+            <div class="feature">
+                SECRET<br>SURPRISES
+            </div>
+
+        </div>
+
+
+        <div class="announcement">
+
+            <div class="announcement-label">
+                FROM THE ORIGINAL INVITATION
+            </div>
+
+            <p>
+                “So grab your shades, bring your wildest vibes,
+                and get ready for a ten-day party you do not want to miss.”
+            </p>
+
+        </div>
+
+
+        <div class="event-footer">
+
+            <span>
+                VENUE
+                <strong>THE CELESTIAL HAVEN</strong>
+            </span>
+
+            <span>
+                ARCHIVE 01 / 02
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+</article>
+
+<!-- =====================================================
+     ARCHIVE MARKER
+===================================================== -->
+
+<div class="archive-marker">
+    <span>II</span>
+</div>
+
+<!-- =====================================================
+     EVENT 02 — 2026
+===================================================== -->
+
+<article class="event">
+
+<div class="event-date">
+
+    <span class="year">
+        2026
+    </span>
+
+    <span class="day">
+        21 JUNE<br>
+        30 JUNE
+    </span>
+
+</div>
+
+
+<div class="event-card">
+
+    <div class="event-inner">
+
+        <div class="event-tag">
+            SUMMER EVENT • 10 DAYS
+        </div>
+
+        <h3 class="event-title">
+            SUNSHINE &
+            <span>SHENANIGANS</span>
+        </h3>
+
+        <div class="event-subtitle">
+            Ten days. Endless summer energy.
+        </div>
+
+        <p class="event-description">
+            A year later, the summer celebration returned.
+            From 21st to 30th June 2026, The Celestial Oasis invited
+            everyone to step into another ten-day experience filled with
+            sunshine, laughter, interactive games, exciting events and
+            memories waiting to happen.
+        </p>
+
+
+        <div class="features">
+
+            <div class="feature">
+                SUMMER<br>VIBES
+            </div>
+
+            <div class="feature">
+                INTERACTIVE<br>GAMES
+            </div>
+
+            <div class="feature">
+                EXCITING<br>EVENTS
+            </div>
+
+            <div class="feature">
+                LAUGHTER
+            </div>
+
+            <div class="feature">
+                FRIENDS
+            </div>
+
+            <div class="feature">
+                NEW<br>MEMORIES
+            </div>
+
+        </div>
+
+
+        <div class="announcement">
+
+            <div class="announcement-label">
+                FROM THE ORIGINAL INVITATION
+            </div>
+
+            <p>
+                “Gather your friends, bring your energy and get ready
+                to create memories that will last long after summer.”
+            </p>
+
+        </div>
+
+
+        <div class="event-footer">
+
+            <span>
+                COMMUNITY
+                <strong>THE CELESTIAL OASIS</strong>
+            </span>
+
+            <span>
+                ARCHIVE 02 / 02
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+</article>
+
+</section>
+
+<!-- =====================================================
+     CLOSING
+===================================================== -->
+
+<section class="closing">
+
+<div class="closing-line"></div>
+
+<div class="small">
+    THE ARCHIVE CONTINUES
+</div>
+
+<h2>
+    THE EVENTS END.
+    <span>THE MEMORIES DON'T.</span>
+</h2>
+
+<p>
+    These are only two chapters in TCO's story. The names, themes and
+    activities may change with every year, but the reason behind them
+    remains the same — giving people a place to come together,
+    have fun and create something worth remembering.
+</p>
+
+</section>
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<div class="navigation">
+
+<a href="page2.html" class="nav-button">
+    ← RETURN TO THE GRAND HALL
+    <span>CHAMBER II</span>
+</a>
+
+<a href="page4.html" class="nav-button">
+    ENTER THE FOUNDATION →
+    <span>CHAMBER IV • THE PEOPLE</span>
+</a>
+
+</div>
+
+</main>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<span>
+    THE CELESTIAL OASIS
+</span>
+
+<strong>
+    CHAMBER III • EVENT ARCHIVES
+</strong>
+
+</footer>
+
+</body>
+</html>
